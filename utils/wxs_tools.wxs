@@ -1,0 +1,27 @@
+function formatTimeStamp(timeStamp){
+    // const date = new Date(timeStamp)
+    return formatTime(getDate(timeStamp * 1000))
+}
+
+function formatTime  (date)  {
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+
+    return [year, month, day].map(formatNumber).join('/')
+}
+
+function formatNumber (n) {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+}
+
+// 将 m 转化为 km
+function formatDistance (distance) {
+    return (distance/1000).toFixed(2)
+}
+
+module.exports = {
+    formatTimeStamp: formatTimeStamp,
+    formatDistance: formatDistance
+};

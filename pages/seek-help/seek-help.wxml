@@ -1,0 +1,59 @@
+<!--pages/seek-help/seek-help.wxml-->
+<!-- S=背景图片 -->
+<view class="bg-container">
+	<image class="bg-img" src="/images/seek_help_bg.png" mode="aspectFill"></image>
+	<view class="mask"></view>
+</view>
+<!-- E=背景图片 -->
+<view class="header">
+	亲爱的宠物主，你最近受惊了 <text>\n</text>
+	别担心，我们会尽量帮助你和小毛孩<text>\n</text>
+	现在，需要你尽可能准确地留下信息<text>\n</text>
+	以便志愿者更好地帮助你。
+	<image src="/images/title.png" mode="aspectFill"></image>
+</view>
+<view class="body">
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">几只猫</view>
+		<view class="form-input"><input type="number" disabled="{{isUpdate}}" confirm-type="next" placeholder="填写你有几只猫" bindinput="onCatInput" value="{{catNum}}"></input></view>
+	</view>
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">几只狗</view>
+		<view class="form-input"><input type="number" disabled="{{isUpdate}}" confirm-type="next" placeholder="填写你有几只狗" bindinput="onDogInput" value="{{dogNum}}"></input></view>
+	</view>
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">最后喂养日</view>
+		<view class="form-input">
+			<picker mode="date" bindchange="onEndDateChange" value="{{showEndDate}}">{{showEndDate?showEndDate:'选择日期'}}</picker>
+		</view>
+	</view>
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">需要帮助日期</view>
+		<view class="form-input">
+			<picker mode="date" bindchange="onHelpDateChange" value="{{showHelpDate}}">{{showHelpDate?showHelpDate:'选择日期'}}</picker>
+		</view>
+	</view>
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">地址</view>
+		<view class="form-input">
+			<view class="place-holder choose-location {{isUpdate?'disabled':''}}" bindtap="onChooseAddressTap">{{location.addressName?location.addressName:'选择地址'}}<image src="/images/choose_location.png" mode="aspectFit"></image></view>
+		</view>
+	</view>
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">小区管控</view>
+		<view class="form-input">
+			<picker mode="selector"  disabled="{{isUpdate}}" range="{{trafficRange}}" bindchange="onTrafficChange">{{trafficCtrl != null? trafficRange[trafficCtrl] : '选择小区管控'}}</picker>
+		</view>
+	</view>
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">电话</view>
+		<view class="form-input"><input type="number"  disabled="{{isUpdate}}" confirm-type="next" placeholder="输入手机号" bindinput="onPhoneInput" value="{{phone}}"></input></view>
+	</view>
+	<view class="form-group flex justify-between align-center margin-top-sm">
+		<view class="form-label">微信</view>
+		<view class="form-input"><input type="text"  disabled="{{isUpdate}}" maxlength='20' confirm-type="done" placeholder="输入微信号" bindinput="onWxIdInput" value="{{wxid}}"></input></view>
+	</view>
+	<view class="container-submit">
+		<button class="btn-submit" bindtap="onSubmitTap">提 交</button>
+	</view>
+</view>

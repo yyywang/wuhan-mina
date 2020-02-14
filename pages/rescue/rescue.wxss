@@ -1,0 +1,361 @@
+/* pages/rescue/rescue.wxss */
+
+/* picker */
+.container-region {
+    background-color: white;
+    height: 80rpx;
+}
+
+.container-region .picker {
+    padding-top: 35rpx;
+    font-size: 36rpx;
+}
+
+.container-region .picker image {
+    width: 25rpx;
+    height: 25rpx;
+    margin-left: 10rpx;
+}
+
+
+/* search */
+.search {
+    padding-top: 35rpx !important;
+    padding-bottom: 26rpx !important;
+    padding-left: 30rpx !important;
+    padding-right: 30rpx !important;
+}
+
+.search-form {
+    padding-left: 30rpx;
+    height: 80rpx !important;
+    border-radius: 12rpx;
+    font-size: 36rpx !important;
+    margin: 0 !important;
+}
+
+.cu-bar .search-form [class*="cuIcon-"] {
+    margin: 0 30rpx 0 20rpx !important;
+}
+
+.cu-bar .search-form+.action {
+    margin-left: 30rpx !important;
+    margin-right: 0 !important;
+}
+
+.search-holder {
+    font-size: 30rpx;
+}
+
+.no-search-result {
+    background-color: #efc743;
+    border-radius: 12rpx;
+    color: white;
+    width: 93%;
+    margin: 0 auto;
+    font-size: 30rpx;
+    height: 80rpx;
+    margin-top: 36rpx;
+}
+
+/* card */
+.container-card {
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+
+.card {
+    background-color: white;
+    width: 100%;
+    border-radius: 12rpx;
+    margin-top: 36rpx;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30rpx;
+    padding-right: 30rpx;
+    color: #66aad9;
+}
+
+.card .header-red {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30rpx;
+    padding-right: 30rpx;
+    color: #ec8171;
+}
+
+.card .title {
+    display: flex;
+    flex-direction: row;
+    font-weight: 500;
+    font-size: 36rpx;
+}
+
+.card .header .title .icon {
+    height: 100%;
+    width: 10rpx;
+    background-color: #66aad9;
+    margin-right: 20rpx;
+}
+
+.card .header-red .title .icon {
+    height: 100%;
+    width: 10rpx;
+    background-color: #ec8171;
+    margin-right: 20rpx;
+}
+
+.card .header .distance {
+    color: white;
+    background-color: #66aad9;
+    border-radius: 6rpx;
+    padding: 10rpx;
+    font-size: 23rpx;
+    font-weight: 400;
+}
+
+.card .header-red .distance {
+    color: white;
+    background-color: #ec8171;
+    border-radius: 6rpx;
+    padding: 10rpx;
+    font-size: 23rpx;
+    font-weight: 400;
+}
+
+.card .content {
+    padding: 0 30rpx;
+}
+
+.card .content .address {
+    font-weight: 500;
+    margin-top: 45rpx;
+    margin-bottom: 10rpx;
+}
+
+.card .content .animal {
+    font-weight: 500;
+}
+
+.card .content .end-date {
+    padding-top: 40rpx;
+    font-size: 24rpx;
+    padding-bottom: 30rpx;
+}
+
+.card .content .board {
+    position: absolute;
+    border-bottom: none;
+    right: 20rpx;
+    bottom: 60rpx;
+    text-align: center;
+    padding: 10rpx;
+    padding-bottom: 20rpx;
+}
+
+.card .content .board image {
+    width: 156rpx;
+    height: 156rpx !important;
+    position: relative;
+    bottom: -125rpx;
+}
+
+.card .content .board .traffic {
+    font-size: 18rpx;
+    margin-bottom: 5rpx;
+    margin-top: 5rpx;
+}
+
+.card .content .board .traffic .icon {
+    color: #efc743;
+}
+
+.card .content .board .support-days {
+    font-weight: 500;
+    font-size: 30rpx;
+    margin-top: 10rpx;
+}
+
+.card .content .board .support-days .num {
+    color: #ec8171;
+}
+
+.card .content .board .hr {
+    height: 1rpx;
+    width: 80%;
+    background-color: #efc743;
+    margin: 0 auto;
+}
+
+.card .operator {
+    padding: 20rpx;
+    display: flex;
+    justify-content: space-between;
+    background-color: #efc743;
+    border-bottom-right-radius: 12rpx;
+    border-bottom-left-radius: 12rpx;
+    color: white;
+    font-size: 500;
+}
+
+.card .operator image {
+    width: 43rpx;
+    height: 43rpx;
+    margin-right: 10rpx;
+}
+
+.card .operator > view{
+    display: flex;
+    align-items: center;
+}
+
+.seek-help,
+.communicate {
+    padding: 20rpx;
+    width: 130rpx;
+    height: 130rpx;
+    position: fixed;
+    right: 0;
+}
+
+.seek-help {
+    bottom: 150rpx;
+}
+
+.communicate {
+    bottom: 30rpx;
+}
+
+/* modal */
+.cu-modal .cu-bar {
+    min-height: 246rpx;
+}
+
+.cu-modal .action {
+    position: relative;
+    top: -90rpx;
+    right: -10rpx;
+}
+
+.cu-modal .content {
+    position: relative;
+    overflow: visible;
+    margin-top: 20rpx;
+}
+
+.cu-modal .sign{
+    position: absolute; 
+     left: -80rpx;
+     top: -20rpx;
+}
+
+.cu-modal .sign image {
+    width: 120rpx;
+    height: 45rpx;
+}
+
+.cu-modal .sign text {
+    position: absolute;
+    left: 25rpx;
+    top: -10rpx;
+
+}
+
+.cu-modal .content .detail {
+    background-color: #ddd;
+    border-radius: 12rpx;
+    position: relative;
+    right: 80rpx;
+    top: 80rpx;
+    min-width: 600rpx;
+    padding: 15rpx 0;
+}
+
+.modal-close {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.container-btn-copy-wxid {
+    background-color: #efc743;
+}
+
+.btn-copy-wxid {
+    background-color: #66aad8;
+    width: 50%;
+    margin: auto;
+    color: white;
+    font-size: 36rpx;
+    padding: 13rpx;
+    border-radius: 12rpx;
+}
+
+/* feedback-modal */
+
+.feedback-modal .cu-bar {
+    min-height: 100rpx;
+}
+
+.feedback-modal .cu-bar .sign{
+   left: 50rpx;
+   top: 0rpx;
+}
+
+.feedback-modal .cu-bar .action {
+    top: -15rpx;
+    right: -15rpx;
+}
+
+.feedback-modal .cu-bar .sign text {
+    left: 30rpx;
+    top: 2rpx;
+}
+
+.feedback-modal .cu-dialog .title {
+    margin-left: 55rpx;
+    margin-right: 55rpx;
+    text-align: left;
+    font-size: 33rpx;
+    margin-bottom: 20rpx;
+    font-weight: 500;
+}
+
+.feedback-modal .cu-dialog .des {
+    margin-left: 55rpx;
+    margin-right: 55rpx;
+    text-align: left;
+    margin-bottom: 20rpx;
+    color: #666;
+    font-size: 26rpx;
+}
+
+.feedback-modal .cu-dialog .tips {
+    text-align: left;
+    color: white;
+    margin-bottom: 30rpx;
+    font-size: 26rpx;
+}
+
+.feedback-modal radio-group .cu-list {
+    border-radius: 12rpx !important;
+    margin-bottom: 20rpx;
+    margin-left: 55rpx !important;
+    margin-right: 55rpx !important;
+}
+
+.feedback-modal radio-group .cu-item {
+    background-color: #eee !important;
+}
+
+.feedback-modal .btn-copy-wxid {
+    margin-right: 0;
+}
+

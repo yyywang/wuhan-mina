@@ -1,0 +1,112 @@
+/* pages/seek-help/seek-help.wxss */
+page {
+    background-color: white;
+}
+
+.bg-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: -999;
+    width: 100%;
+    height: 1334rpx;
+}
+
+.bg-img {
+    width: 100%;
+    height: 667rpx;
+    position: fixed;
+    top: 50%;
+}
+
+.mask {
+    width: 100%;
+    height: 667rpx;
+    background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    position: fixed;
+    top: 50%;
+    left: 0;
+}
+
+.header {
+    height: 150rpx;
+    background-color: #e6af40;
+    border-radius: 20rpx;
+    color: white;
+    margin-left: 73rpx;
+    margin-right: 148rpx;
+    margin-top: 45rpx;
+    font-size: 22rpx;
+    position: relative;
+    padding-left: 40rpx;
+    padding-top: 12rpx;
+    box-shadow: 5rpx -5rpx 5rpx #eee;
+}
+
+.header image {
+    position: absolute;
+    height: 150rpx;
+    width: 150rpx;
+    border-radius: 50%;
+    top: 0;
+    right: -75rpx;
+    box-shadow: 5rpx -5rpx 5rpx #eee;
+}
+
+.body {
+    padding-top: 40rpx;
+}
+
+.form-group {
+    padding-left: 73rpx;
+    padding-right: 73rpx;
+}
+
+.form-label {
+    width: 30%;
+}
+
+.form-input {
+    width: 70%;
+}
+
+.form-input input,
+.form-input picker,
+.form-input .place-holder{
+    background-color: #f0f0f0;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    height: auto;
+    color: #777;
+    font-size: 25rpx;
+    min-height: 55rpx !important;
+    line-height: 55rpx;
+}
+
+.choose-location image{
+    width: 33rpx;
+    height: 33rpx;
+    float: right;
+    margin-top: 11rpx;
+}
+
+.container-submit {
+    padding-right: 73rpx;
+    padding-top: 20rpx;
+}
+
+.btn-submit {
+    float: right;
+    background-color: #69abd6;
+    color: white;
+    width: 300rpx !important;
+}
+
+input[disabled],
+picker[disabled] {
+    background-color: #bbb;
+}
+
+.disabled{
+    background-color: #bbb !important;
+}

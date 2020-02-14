@@ -1,0 +1,149 @@
+<!--pages/rescue/rescue.wxml-->
+<wxs src="../../utils/wxs_tools.wxs" module="tools" />
+<!-- S=轮播 -->
+<swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+	<swiper-item wx:for="{{swiperList}}" wx:for-index="idx" wx:key="idx">
+		<image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+		<video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+	</swiper-item>
+</swiper>
+<!-- E=轮播 -->
+<!-- S=地址选择 -->
+<view class="container-region">
+	<picker mode="region" bindchange="RegionChange" value="{{region}}" custom-item="{{customItem}}">
+		<view class="picker flex justify-around">
+			<view>{{region[0]}}
+				<image src="../../images/inverted_triangle.png" mode="aspectFit"></image>
+			</view>
+			<view>{{region[1]}}
+				<image src="../../images/inverted_triangle.png" mode="aspectFit"></image>
+			</view>
+			<view>{{region[2]}}
+				<image src="../../images/inverted_triangle.png" mode="aspectFit"></image>
+			</view>
+		</view>
+	</picker>
+</view>
+<!-- E=地址选择 -->
+<!-- S=搜索框 -->
+<view class="cu-bar bg-white search">
+	<view class="search-form radius">
+		<input type="text" placeholder-class="search-holder" placeholder="请输入地址或联系电话搜索" value="{{searchQ}}" confirm-type="search" bindinput="onSearchInput" bindconfirm="onSearchConfirm" bindfocus="onSearchFocus"></input>
+		<text class="text-gray">|</text><text class="cuIcon-search text-balck" bindtap="onSearchConfirm"></text>
+	</view>
+	<view wx:if="{{onSearching}}" class="action" bindtap="onSearchCancel">
+		<!-- <text class="cuIcon-close"></text> -->
+		<text>取消</text>
+	</view>
+</view>
+<!-- E=搜索框 -->
+<!-- S=信息卡片 -->
+<view class="container-card">
+	<block wx:for="{{searchResult.items||seekHelp.items}}" wx:for-index="idx" wx:key="idx">
+		<view class="card">
+			<view class="{{item.support_days < 3 ? 'header-red' : 'header'}}">
+				<view class="title">
+					<view class="icon"></view>
+					{{item.support_days > 0 ? item.support_days + '天后' : '今天'}}需要帮助
+				</view>
+				<view wx:if="{{item.distance}}" class="distance">距离{{tools.formatDistance(item.distance)}}km</view>
+			</view>
+			<view class="content">
+				<!-- 显示：区 + 详细地址 -->
+				<view class="address">{{item.district}} - {{item.address_name}}</view>
+				<view class="animal text-bold">
+					{{item.cat_num ? item.cat_num + '只猫' : ''}}{{item.dog_num ? item.dog_num + '只狗' : '' }}
+				</view>
+				<view class="end-date">最后一次喂养: {{tools.formatTimeStamp(item.end_date)}}</view>
+				<view class="board">
+					<image src="../../images/board.png" mode="aspectFit"></image>
+					<view class="traffic"><text class="cuIcon-roundcheckfill icon"></text> {{item.traffic_ctrl}}</view>
+					<view class="hr"></view>
+					<view class="support-days">
+						<text wx:if="{{item.support_days > -1}}">可撑 <text class="num">{{item.support_days}}</text> 天</text>
+						<text wx:else >断粮 <text class="num">{{-item.support_days}}</text> 天</text>
+					</view>
+				</view>
+			</view>
+			<view class="operator">
+				<view data-phone="{{item.phone}}" bindtap="onPhoneTap">
+					<image src="../../images/phone.png" mode="aspectFit"></image>电话
+				</view>
+				<view data-wxid="{{item.wx_id}}" bindtap="onWxTap">
+					<image src="../../images/weixin.png" mode="aspectFit"></image>微信
+				</view>
+				<view data-cid="{{item.id}}" bindtap="onUpdateTap">
+					<image src="../../images/refresh.png" mode="aspectFit"></image>更新
+				</view>
+				<view data-cid="{{item.id}}" bindtap="onFeedbackTap">
+					<image src="../../images/feedback.png" mode="aspectFit"></image>纠错
+				</view>
+			</view>
+		</view>
+	</block>
+</view>
+<!-- E=信息卡片 -->
+<!-- S=底线/加载下一页数据时提示 -->
+<view wx:if="{{!onSearching}}" class="cu-load bg-gray text-grey {{isNextPageLoading?'loading':'over'}} comment-next-load"></view>
+<view wx:if="{{onSearching&&noSearchResult}}" class="padding-tb-sm padding-left no-search-result">
+	<text class="cuIcon-warnfill text-white "></text>
+	没有找到该小区/手机号的求助信息
+</view>
+<!-- E=底线/加载下一页数据时提示 -->
+<!-- S=Modal -->
+<view class="cu-modal {{showWxModal?'show':''}} wx-modal">
+	<view class="cu-dialog">
+		<view class="cu-bar bg-gray justify-end">
+			<view class="content">
+				<view class="sign text-white">
+					<image src="/images/wx_sing_bg.png" mode="aspectFit"></image>
+					<text>微 信</text>
+				</view>
+				<view class="detail">{{wxid}}</view>
+			</view>
+			<view class="action" bindtap="hideWxModal">
+				<image class="modal-close" src="/images/close.png" mode="aspectFit"></image>
+			</view>
+		</view>
+		<view class="padding-xl container-btn-copy-wxid">
+			<view class="btn-copy-wxid" bindtap="onCopyWxidTap">点击复制微信</view>
+		</view>
+	</view>
+</view>
+
+<view class="cu-modal {{showFeedbackModal?'show':''}} feedback-modal" bindtap="hideModal">
+	<view class="cu-dialog" catchtap>
+		<view class="cu-bar justify-end">
+			<view class="sign text-white">
+				<image src="/images/wx_sing_bg.png" mode="aspectFit"></image>
+				<text>纠 错</text>
+			</view>
+			<view class="action" bindtap="hideFeedbackModal">
+				<image class="modal-close" src="/images/close.png" mode="aspectFit"></image>
+			</view>
+		</view>
+		<view class="title">错误类型</view>
+		<radio-group class="block" bindchange="onChooseErrType">
+			<view class="cu-list menu text-left">
+				<view class="cu-item" wx:for="{{feedOptions}}" wx:for-index="idx" wx:key="idx">
+					<label class="flex justify-between align-center flex-sub">
+						<view class="flex-sub">{{item.content}}</view>
+						<radio class="round" value="{{item.err_type}}"></radio>
+					</label>
+				</view>
+			</view>
+		</radio-group>
+		<view class="des">收到纠错信息请求后我们会再次审核信息以保证准确性。</view>
+		<view class="padding-xl container-btn-copy-wxid">
+		<view class="tips">我们的人力资源十分有限，<text>\n</text>请不要滥用该功能，感谢理解！</view>
+			<view class="btn-copy-wxid" bindtap="onSubmitFeedTap">提 交</view>
+		</view>
+	</view>
+</view>
+<!-- E=Modal -->
+
+
+<!-- S=跳转按钮 -->
+<image class="seek-help" src="/images/seek_help.png" mode="aspectFit" bindtap="onSeekHelpTap"></image>
+<image class="communicate" src="/images/communicate.png" mode="aspectFit" bindtap="onCommunicateTap"></image>
+<!-- E=跳转按钮 -->

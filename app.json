@@ -1,0 +1,23 @@
+{
+    "pages": [
+        "pages/rescue/rescue",
+        "pages/seek-help/seek-help",
+        "pages/index/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#efc743",
+        "navigationBarTitleText": "喂喂我",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json",
+    "navigateToMiniProgramAppIdList": [
+        "wx02dc77299f086017"
+    ],
+    "permission": {
+        "scope.userLocation": {
+          "desc": "用于发布求助信息/显示最近距离的求助信息"
+        }
+      }
+}
