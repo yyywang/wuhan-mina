@@ -1,5 +1,6 @@
 var config = {
-  api_base_url: 'http://172.20.10.2:5008/v1/',
+  // api_base_url: 'http://172.20.10.2:5008/v1/',
+  api_base_url: 'https://www.ywtest.cn/v1/',
   region: ['全部', '全部', '全部'],
   swiperList: [{
     id: 0,
