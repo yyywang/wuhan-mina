@@ -1,0 +1,182 @@
+page {
+  background-color: #e1e1e1;
+}
+/* card */
+.seek-wrap {
+  padding: 0 20rpx;
+}
+
+.card {
+  background-color: white;
+  width: 100%;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  padding-right: 30rpx;
+  color: #66aad9;
+}
+
+.card .header-red {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  padding-right: 30rpx;
+  color: #ec8171;
+}
+
+.card .title {
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  font-size: 36rpx;
+}
+
+.card .header .title .icon {
+  height: 100%;
+  width: 10rpx;
+  background-color: #66aad9;
+  margin-right: 20rpx;
+}
+
+.card .header-red .title .icon {
+  height: 100%;
+  width: 10rpx;
+  background-color: #ec8171;
+  margin-right: 20rpx;
+}
+
+.card .header .distance {
+  color: white;
+  background-color: #66aad9;
+  border-radius: 6rpx;
+  padding: 10rpx;
+  font-size: 23rpx;
+  font-weight: 400;
+}
+
+.card .header-red .distance {
+  color: white;
+  background-color: #ec8171;
+  border-radius: 6rpx;
+  padding: 10rpx;
+  font-size: 23rpx;
+  font-weight: 400;
+}
+
+.card .cancel {
+  background-color: #fff !important;
+  color: #999 !important;
+}
+
+.card .content {
+  padding: 0 30rpx;
+}
+
+.card .content .address {
+  font-weight: 500;
+  margin-top: 45rpx;
+  margin-bottom: 10rpx;
+}
+
+.card .content .animal {
+  font-weight: 500;
+}
+
+.card .content .end-date {
+  padding-top: 40rpx;
+  font-size: 24rpx;
+  padding-bottom: 30rpx;
+}
+
+.card .content .board {
+  position: absolute;
+  border-bottom: none;
+  right: 20rpx;
+  bottom: 60rpx;
+  text-align: center;
+  padding: 10rpx;
+  padding-bottom: 20rpx;
+}
+
+.card .content .board image {
+  width: 156rpx;
+  height: 156rpx !important;
+  position: relative;
+  bottom: -125rpx;
+}
+
+.card .content .board .traffic {
+  font-size: 18rpx;
+  margin-bottom: 5rpx;
+  margin-top: 5rpx;
+}
+
+.card .content .board .traffic .icon {
+  color: #efc743;
+}
+
+.card .content .board .support-days {
+  font-weight: 500;
+  font-size: 30rpx;
+  margin-top: 10rpx;
+}
+
+.card .content .board .support-days .num {
+  color: #ec8171;
+}
+
+.card .content .board .hr {
+  height: 1rpx;
+  width: 80%;
+  background-color: #efc743;
+  margin: 0 auto;
+}
+
+.card .operator {
+  padding: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  background-color: #efc743;
+  border-bottom-right-radius: 12rpx;
+  border-bottom-left-radius: 12rpx;
+  color: white;
+  font-size: 500;
+}
+
+.card .operator image {
+  width: 43rpx;
+  height: 43rpx;
+  margin-right: 10rpx;
+}
+
+.card .operator > view {
+  display: flex;
+  align-items: center;
+}
+
+.seek-help,
+.communicate {
+  padding: 20rpx;
+  width: 130rpx;
+  height: 130rpx;
+  position: fixed;
+  right: 0;
+}
+
+.seek-help {
+  bottom: 150rpx;
+}
+
+.communicate {
+  bottom: 30rpx;
+}

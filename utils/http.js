@@ -22,8 +22,8 @@ class HTTP {
       method: params.type,
       header: {
         'content-type': 'application/json',
-        // 'Authorization': 'Basic ' + base64_encode(
-        //   wx.getStorageSync('token') + ':')
+        'Authorization': 'Basic ' + base64_encode(
+          wx.getStorageSync('token') + ':')
       },
       success: function (res) {
         // 判断以2（2xx)开头的状态码为正确

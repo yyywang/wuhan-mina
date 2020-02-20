@@ -1,23 +1,44 @@
 {
-    "pages": [
-        "pages/rescue/rescue",
-        "pages/seek-help/seek-help",
-        "pages/index/index"
-    ],
-    "window": {
-        "backgroundTextStyle": "dark",
-        "navigationBarBackgroundColor": "#efc743",
-        "navigationBarTitleText": "喂喂我",
-        "navigationBarTextStyle": "black"
-    },
-    "style": "v2",
-    "sitemapLocation": "sitemap.json",
-    "navigateToMiniProgramAppIdList": [
-        "wx02dc77299f086017"
-    ],
-    "permission": {
-        "scope.userLocation": {
-          "desc": "用于发布求助信息/显示最近距离的求助信息"
-        }
+  "pages": [
+    "pages/rescue/rescue",
+    "pages/myHelp/myHelp",
+    "pages/mySeek/mySeek",
+    "pages/user/user",
+    "pages/seek-help/seek-help",
+    "pages/can-help/can-help",
+    "pages/seekDetail/seekDetail",
+    "pages/helpDetail/helpDetail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#efc743",
+    "navigationBarTitleText": "喂喂我",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": ["wx02dc77299f086017", "wx8abaf00ee8c3202e"],
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#efc743",
+    "list": [
+      {
+        "pagePath": "pages/rescue/rescue",
+        "text": "首页",
+        "iconPath": "/images/index.png",
+        "selectedIconPath": "/images/index_ed.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "/images/user.png",
+        "selectedIconPath": "/images/user_ed.png"
       }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于发布求助信息/显示最近距离的求助信息"
+    }
+  }
 }

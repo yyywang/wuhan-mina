@@ -1,0 +1,75 @@
+<view class="container">
+  <view class="am-show">
+    <view class="form-group flex justify-between align-center">
+      <view class="form-label">地址</view>
+      <view class="form-input">
+        <view class="place-holder choose-location disabled">{{content.location.address_name}}</view>
+      </view>
+    </view>
+    <view class="form-group flex justify-between align-center margin-top-sm">
+      <view class="form-label">愿帮范围</view>
+      <view class="form-input">
+        <input type="number" disabled confirm-type="next" value="{{content.help_range+'km'}}"></input>
+      </view>
+    </view>
+    <view class="form-group flex justify-between align-center margin-top-sm">
+      <view class="form-label">收费吗</view>
+      <view class="form-input">
+        <input type="number" disabled confirm-type="next" value="{{content.cost===0?'免费':content.cost}}"></input>
+      </view>
+    </view>
+    <view class="form-group flex justify-between align-center margin-top-sm">
+      <view class="form-label">电话</view>
+      <view class="form-input">
+        <input type="number" disabled confirm-type="next" value="{{content.phone}}"></input>
+      </view>
+    </view>
+    <view class="form-group flex justify-between align-center margin-top-sm">
+      <view class="form-label">微信</view>
+      <view class="form-input">
+        <input type="text" disabled maxlength='20' confirm-type="done" value="{{content.wx_id}}"></input>
+      </view>
+    </view>
+    <view class="form-group flex justify-between align-center margin-top-sm">
+      <view class="form-label">备注</view>
+      <view class="form-input">
+        <textarea disabled maxlength='50' value="{{content.note}}"></textarea>
+      </view>
+    </view>
+    <view class="form-group flex justify-between align-center margin-top-sm">
+      <view class="form-label">状态</view>
+      <view class="form-input">
+        <view class="place-holder choose-location disabled status">
+          {{content.is_cancel?'已取消':'帮助中'}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="share-btn" bind:tap="showShare" wx:if="{{!content.cancel}}">召唤好友一起救助</view>
+  <view class="cancel-btn" bind:tap="cancelSeek" wx:if="{{!content.cancel}}">取消救助</view>
+  <!-- <view class="statement">平台安全提示-免责声明</view> -->
+  <!-- s=遮罩 -->
+  <view class="mask" wx:if="{{shareFlag}}">
+    <view class="mask-title">请好友帮忙</view>
+    <view class="share-warp">
+      <view class="share-list" bind:tap="showPoster">
+        <image src="/images/circle.png" />
+        <view>朋友圈</view>
+      </view>
+      <view class="share-list">
+        <image src="/images/weixin_green.png" />
+        <view>微信好友</view>
+        <button open-type="share" class="share-btn"></button>
+      </view>
+    </view>
+    <view class="hr"></view>
+    <view class="cancel" bind:tap="closeShare">取消</view>
+  </view>
+  <view class="black-wrap" wx:if="{{shareFlag}}"></view>
+  <!-- e=遮罩 -->
+  <!-- s=海报 -->
+  <canvas canvas-id="myCanvas"></canvas>
+  <image src="{{posterImg}}" wx:if="{{posterFlag}}" class="posterImg" bind:tap="closePoster" />
+  <view class="black-wrap" wx:if="{{posterFlag}}"></view>
+  <!-- e=海报 -->
+</view>

@@ -1,0 +1,196 @@
+.container {
+  padding: 20rpx 0;
+}
+
+.am-show {
+  width: 700rpx;
+  padding: 60rpx;
+  margin: 0 auto 20rpx;
+  background-color: #fff;
+  color: #000;
+  border-radius: 20rpx;
+}
+
+.am-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 700rpx;
+  height: 80rpx;
+  margin: 10rpx auto;
+}
+
+.am-title .title-msg {
+  font-size: 36rpx;
+}
+
+.am-title .update-msg {
+  font-size: 26rpx;
+  color: #169bd5;
+  margin-top: 15rpx;
+}
+
+.form-label {
+  width: 30%;
+}
+
+.form-input {
+  width: 70%;
+}
+
+.form-input input,
+.form-input picker,
+.form-input .place-holder,
+.form-input textarea {
+  background-color: #fff;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  height: auto;
+  color: #333;
+  font-size: 24rpx;
+  min-height: 55rpx !important;
+  line-height: 55rpx;
+}
+
+.form-input textarea {
+  width: 406rpx;
+  height: 110rpx;
+  resize: none;
+}
+
+.form-input .status {
+  color: #e4393c;
+  background-color: #fff !important;
+  font-size: 30rpx;
+}
+
+.choose-location image {
+  width: 33rpx;
+  height: 33rpx;
+  float: right;
+  margin-top: 11rpx;
+}
+
+.container-submit {
+  padding-right: 73rpx;
+  padding-top: 20rpx;
+}
+
+.btn-submit {
+  float: right;
+  background-color: #69abd6;
+  color: white;
+  width: 300rpx !important;
+}
+
+input[disabled],
+picker[disabled],
+textarea[disabled] {
+  background-color: #fff;
+}
+
+.disabled {
+  background-color: #fff !important;
+}
+
+.cancel-btn,
+.share-btn {
+  width: 650rpx;
+  margin: 50rpx auto;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #999;
+  text-align: center;
+  border-radius: 40rpx;
+  background-color: #fff;
+  border: 2rpx solid #aaa;
+}
+
+.statement {
+  text-align: center;
+  color: #169bd5;
+  font-size: 26rpx;
+  margin: 20rpx auto;
+}
+
+.share-btn {
+  margin-top: 300rpx;
+  color: #fff;
+  background-color: #efc743;
+  border: none;
+}
+
+/* 分享 */
+.black-wrap {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 90;
+}
+
+.mask {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400rpx;
+  background-color: #fff;
+  z-index: 100;
+  border-radius: 30rpx 30rpx 0 0;
+  border-top: 2rpx solid #aaa;
+}
+
+.mask .mask-title {
+  text-align: center;
+  font-size: 40rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.mask .share-warp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mask .share-warp .share-list {
+  position: relative;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.mask .share-warp .share-list .share-btn {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.mask .share-warp .share-list image {
+  width: 100rpx;
+  height: 100rpx;
+  vertical-align: middle;
+  margin-bottom: 20rpx;
+}
+
+.mask .hr {
+  width: 90%;
+  margin: 10rpx auto;
+  height: 2rpx;
+  background-color: #e1e1e1;
+}
+
+.mask .cancel {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #169bd5;
+}

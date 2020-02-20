@@ -4,10 +4,9 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
-		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
@@ -21,12 +20,13 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"preloadBackgroundData": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
 	"appid": "wx9298aaee95eb4726",
-	"projectname": "wuhan-mina",
+	"projectname": "%E5%96%82%E5%96%82%E6%88%91",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -61,7 +61,15 @@
 					"id": -1,
 					"name": "pages/seek-help/seek-help",
 					"pathName": "pages/seek-help/seek-help",
+					"query": "",
 					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/seekDetail/seekDetail",
+					"pathName": "pages/seekDetail/seekDetail",
+					"query": "id=28&isSelf=0",
+					"scene": 1007
 				}
 			]
 		}

@@ -1,27 +1,49 @@
-function formatTimeStamp(timeStamp){
-    // const date = new Date(timeStamp)
-    return formatTime(getDate(timeStamp * 1000))
+function formatTimeStamp(timeStamp) {
+  // const date = new Date(timeStamp)
+  return formatTime(getDate(timeStamp * 1000))
 }
 
-function formatTime  (date)  {
-    var year = date.getFullYear()
-    var month = date.getMonth() + 1
-    var day = date.getDate()
+function formatTime(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
 
-    return [year, month, day].map(formatNumber).join('/')
+  return [year, month, day].map(formatNumber).join('/')
 }
 
-function formatNumber (n) {
-    n = n.toString()
-    return n[1] ? n : '0' + n
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
 }
 
 // 将 m 转化为 km
-function formatDistance (distance) {
-    return (distance/1000).toFixed(2)
+function formatDistance(distance) {
+  return (distance / 1000).toFixed(2)
+}
+
+function formatSpeed(speed) {
+  if (speed < 3) {
+    return '还差' + (3 - speed) + '人升至中速'
+  } else if (speed >= 3 && speed < 8) {
+    return '还差' + (8 - speed) + '人升至高速'
+  } else {
+    return '已升至高速'
+  }
+}
+
+function formatSpeedShow(speed) {
+  if (speed < 3) {
+    return '低速救助中'
+  } else if (speed >= 3 && speed < 8) {
+    return '中速救助中'
+  } else {
+    return '高速救助中'
+  }
 }
 
 module.exports = {
-    formatTimeStamp: formatTimeStamp,
-    formatDistance: formatDistance
-};
+  formatTimeStamp: formatTimeStamp,
+  formatDistance: formatDistance,
+  formatSpeed: formatSpeed,
+  formatSpeedShow: formatSpeedShow
+}

@@ -1,0 +1,68 @@
+<!-- pages/seek-help/seek-help.wxml -->
+<!-- S=背景图片 -->
+<view class="bg-container">
+  <image class="bg-img" src="/images/seek_help_bg.png" mode="aspectFill"></image>
+  <view class="mask"></view>
+</view>
+<!-- E=背景图片 -->
+<view class="header">
+  亲爱的好心人，谢谢你愿意伸出援手。
+  <text>\n</text>
+  现在，麻烦你留下你的信息
+  <text>\n</text>
+  以便更好的帮助其他人
+  <image src="/images/title.png" mode="aspectFill"></image>
+</view>
+<view class="body">
+  <view class="form-group flex justify-between align-center margin-top-sm">
+    <view class="form-label">地址</view>
+    <view class="form-input">
+      <view class="place-holder choose-location" bindtap="onChooseAddressTap">
+        {{location.address_name?location.address_name:'选择地址'}}
+        <image src="/images/choose_location.png" mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+  <view class="form-group flex justify-between align-center margin-top-sm">
+    <view class="form-label">愿帮范围</view>
+    <view class="form-input">
+      <input type="number" confirm-type="next" placeholder="请填写数字，表示可帮附近几千米" bindinput="onCatInput" value="{{help_range}}"></input>
+    </view>
+  </view>
+  <view class="form-group flex justify-between align-center margin-top-sm">
+    <view class="form-label">收费吗</view>
+    <view class="form-input">
+      <picker mode="selector" range="{{trafficRange}}" bindchange="onTrafficChange">
+        {{trafficCtrl != null? trafficRange[trafficCtrl] : '请选择是否收费'}}
+      </picker>
+    </view>
+  </view>
+  <view class="form-group flex justify-between align-center margin-top-sm" wx:if="{{trafficCtrl==='1'}}">
+    <view class="form-label">收多少</view>
+    <view class="form-input">
+      <input type="number" confirm-type="next" placeholder="请填写每次上门多少钱" bindinput="onDogInput" value="{{cost}}"></input>
+    </view>
+  </view>
+  <view class="form-group flex justify-between align-center margin-top-sm">
+    <view class="form-label">电话</view>
+    <view class="form-input">
+      <input type="number" confirm-type="next" placeholder="输入手机号" bindinput="onPhoneInput" value="{{phone}}"></input>
+      <!-- <button class="place-holder" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum"></button> -->
+    </view>
+  </view>
+  <view class="form-group flex justify-between align-center margin-top-sm">
+    <view class="form-label">微信</view>
+    <view class="form-input">
+      <input type="text" maxlength='20' confirm-type="done" placeholder="输入微信号" bindinput="onWxIdInput" value="{{wx_id}}"></input>
+    </view>
+  </view>
+  <view class="form-group flex justify-between align-center margin-top-sm">
+    <view class="form-label">备注</view>
+    <view class="form-input">
+      <textarea bindinput="onNoteInput" placeholder="请补充其他信息，例如是否自带猫粮、微信方便还是电话方便、几点联系方便..." maxlength='50' value="{{note}}"></textarea>
+    </view>
+  </view>
+  <view class="container-submit">
+    <button class="btn-submit" bindtap="onSubmitTap">提 交</button>
+  </view>
+</view>

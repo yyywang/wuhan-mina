@@ -1,0 +1,30 @@
+<view class="container">
+  <!-- S=顶部 -->
+  <view class="user-info">
+    <image class="user-img" src="{{userInfo.avatarUrl?userInfo.avatarUrl:'/images/defaultImg.png'}}" />
+    <view class="user-name">{{userInfo.nickName?userInfo.nickName:'点击登录'}}</view>
+    <button open-type="getUserInfo" class="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+  </view>
+  <!-- E=顶部 -->
+  <!-- S=菜单 -->
+  <view class="menu-wrap">
+    <button class="menu-list" open-type="getUserInfo" bindgetuserinfo="toMySeek">
+      <view class="menu-text">我的求喂</view>
+      <image src="/images/arrow_right.png" />
+    </button>
+    <button class="menu-list" open-type="getUserInfo" bindgetuserinfo="toMyHelp">
+      <view class="menu-text">我能帮的</view>
+      <image src="/images/arrow_right.png" />
+    </button>
+    <view class="menu-list">
+      <view class="menu-text">联系客服</view>
+      <image src="/images/arrow_right.png" />
+      <button open-type="contact" class="contact"></button>
+    </view>
+    <navigator class="menu-list" target="miniProgram" open-type="navigate" app-id="{{ appId }}" extra-data="{{ extraData }}" version="release">
+      <view class="menu-text">吐个槽</view>
+      <image src="/images/arrow_right.png" />
+    </navigator>
+  </view>
+  <!-- E=菜单 -->
+</view>

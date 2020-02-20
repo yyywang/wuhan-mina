@@ -1,25 +1,54 @@
 var config = {
   // api_base_url: 'http://172.20.10.2:5008/v1/',
-  api_base_url: 'https://www.ywtest.cn/v1/',
+  // api_base_url: 'https://www.ywtest.cn/v1/',
+  api_base_url: 'http://www.ywtest.cn:9999/v1/',
   region: ['全部', '全部', '全部'],
-  swiperList: [{
-    id: 0,
-    type: 'image',
-    url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
-  }, {
-    id: 1,
-    type: 'image',
-    url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-  }, {
-    id: 2,
-    type: 'image',
-    url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-  }, {
-    id: 3,
-    type: 'image',
-    url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-  }],
-  feedOptions: [{
+  swiperList: [
+    {
+      id: 0,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+    },
+    {
+      id: 1,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg'
+    },
+    {
+      id: 2,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
+    },
+    {
+      id: 3,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+    }
+  ],
+  swiperList2: [
+    {
+      id: 0,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg'
+    },
+    {
+      id: 1,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+    },
+    {
+      id: 2,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+    },
+    {
+      id: 3,
+      type: 'image',
+      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
+    }
+  ],
+  feedOptions: [
+    {
       err_type: 0,
       content: '联系不上宠物主'
     },
@@ -34,10 +63,8 @@ var config = {
     {
       err_type: 3,
       content: '其他'
-    },
+    }
   ]
 }
 
-export {
-  config
-}
+export { config }

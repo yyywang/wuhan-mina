@@ -1,0 +1,39 @@
+<wxs src="../../utils/wxs_tools.wxs" module="tools" />
+
+<view class="container">
+  <view class="seek-wrap">
+    <view class="card" wx:for="{{mySeeks}}" bind:tap="toSeekDetail" data-id="{{item.id}}">
+      <view class="{{item.support_days < 3 ? 'header-red' : 'header'}}">
+        <view class="title">
+          <view class="icon"></view>
+          {{item.support_days > 0 ? item.support_days + '天后' : '今天'}}需要帮助
+        </view>
+        <view class="distance {{item.cancel?'cancel':''}}" >
+          {{item.cancel?'已取消':'加速中'}}
+        </view>
+      </view>
+      <view class="content">
+        <!-- 显示：区 + 详细地址 -->
+        <view class="address">{{item.location.district}} - {{item.location.address_name}}</view>
+        <view class="animal text-bold">
+          {{item.cat_num ? item.cat_num + '只猫' : ''}}{{item.dog_num ? item.dog_num + '只狗' : '' }}
+        </view>
+        <view class="end-date">最后一次喂养: {{tools.formatTimeStamp(item.last_date)}}</view>
+        <view class="board">
+          <image src="../../images/board.png" mode="aspectFit"></image>
+          <view class="traffic">
+            <text class="cuIcon-roundcheckfill icon"></text>
+            {{item.traffic_ctrl}}
+          </view>
+          <view class="hr"></view>
+          <view class="support-days">
+            <text wx:if="{{item.support_days > -1}}">可撑<text class="num">{{item.support_days}}</text>天
+            </text>
+            <text wx:else>断粮<text class="num">{{-item.support_days}}</text>天
+            </text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

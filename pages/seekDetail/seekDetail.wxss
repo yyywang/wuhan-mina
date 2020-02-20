@@ -1,0 +1,492 @@
+/* pages/seekDetail/seekDetail.wxss */
+page {
+  padding-bottom: 120rpx;
+}
+.container {
+  overflow: hidden;
+}
+/* 火箭 */
+.rocket-wrap {
+  padding: 40rpx 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #67a2cb;
+  color: #fff;
+  border-radius: 0 0 40rpx 40rpx;
+}
+
+.rocket-wrap .rocket-img {
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 50rpx;
+  margin-right: 60rpx;
+  vertical-align: middle;
+}
+
+.rocket-content .rocket-speed {
+  font-size: 36rpx;
+}
+
+/* 进度 */
+.speed-wrap {
+  width: 700rpx;
+  padding: 20rpx;
+  margin: -20rpx auto 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  color: #333;
+}
+
+.speed-wrap .speed-title {
+  font-size: 30rpx;
+}
+
+.speed-wrap .progress-text {
+  margin-top: 10rpx;
+  margin-bottom: 6rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #333;
+}
+
+.speed-wrap .speed-msg {
+  margin-top: 10rpx;
+  color: #d7857a;
+}
+
+/* 自己打开 具体内容 */
+.am-show {
+  width: 700rpx;
+  padding: 20rpx 10rpx;
+  margin: 0 auto 20rpx;
+  background-color: #fff;
+  color: #333;
+  border-radius: 10rpx;
+}
+
+.am-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 40rpx;
+  margin: 10rpx auto;
+}
+
+.am-title .title-msg {
+  font-size: 26rpx;
+}
+
+.am-title .update-msg {
+  font-size: 26rpx;
+  color: #169bd5;
+}
+
+.form-group {
+  padding: 0 20rpx;
+}
+
+.form-label {
+  width: 30%;
+}
+
+.form-input {
+  width: 70%;
+}
+
+.form-input input,
+.form-input picker,
+.form-input .place-holder {
+  background-color: #f0f0f0;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  height: auto;
+  color: #333;
+  font-size: 25rpx;
+  min-height: 55rpx !important;
+  line-height: 55rpx;
+}
+
+.choose-location image {
+  width: 33rpx;
+  height: 33rpx;
+  float: right;
+  margin-top: 11rpx;
+}
+
+.container-submit {
+  padding-right: 73rpx;
+  padding-top: 20rpx;
+}
+
+.btn-submit {
+  float: right;
+  background-color: #69abd6;
+  color: white;
+  width: 300rpx !important;
+}
+
+input[disabled],
+picker[disabled] {
+  background-color: #fff;
+}
+
+.disabled {
+  background-color: #fff !important;
+}
+
+.cancel-btn {
+  width: 650rpx;
+  margin: 50rpx auto;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #999;
+  text-align: center;
+  border-radius: 40rpx;
+  background-color: #fff;
+  border: 2rpx solid #aaa;
+}
+
+.statement {
+  text-align: center;
+  color: #169bd5;
+  font-size: 26rpx;
+  margin: 20rpx auto;
+}
+
+.share-btn {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 120rpx;
+  line-height: 120rpx;
+  padding: 20rpx 0;
+  background-color: #fff;
+  z-index: 89;
+}
+
+.share-btn view {
+  width: 600rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+  color: #fff;
+  background-color: #efc743;
+  border-radius: 40rpx;
+  text-align: center;
+}
+
+/* 分享打开 */
+
+.friend-show {
+  width: 700rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  padding-bottom: 100rpx;
+}
+
+/* 文字内容 */
+.content {
+  width: 100%;
+  margin: 20rpx auto 40rpx;
+  text-align: center;
+  font-size: 38rpx;
+  color: #e3c048;
+}
+
+/* 按钮 */
+.help-btn {
+  width: 600rpx !important;
+  margin: 80rpx auto;
+  height: 90rpx;
+  padding: 0;
+  line-height: 90rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 40rpx;
+  background-color: #efc743;
+}
+
+/* 好友们 */
+.helpers-wrap {
+  width: 100%;
+  padding: 20rpx;
+  margin: 20rpx auto;
+  overflow: hidden;
+  border-radius: 8rpx;
+  background-color: #f0f0f0;
+}
+
+.helpers-wrap .help-title {
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.helpers-wrap scroll-view {
+  width: 100%;
+  margin: 10rpx 0;
+}
+
+.helpers-wrap scroll-view view {
+  display: inline-block;
+  margin-right: 20rpx;
+}
+
+.helpers-wrap scroll-view view image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+/* 文案 */
+.copywriting {
+  margin: 40rpx auto;
+  line-height: 40rpx;
+}
+
+.copywriting view {
+  font-size: 32rpx;
+  margin: 20rpx 0;
+}
+
+/* 按钮组 */
+.btn-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 60rpx auto;
+}
+
+.btn-wrap button {
+  display: block;
+  width: 240rpx !important;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  padding: 0;
+  font-size: 26rpx;
+}
+
+.btn-wrap .help-btn2 {
+  color: #333;
+  background-color: #dcdadb;
+}
+
+.btn-wrap .seek-btn {
+  color: #fff;
+  background-color: #e6c049;
+}
+
+/* 分享 */
+.black-wrap {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 90;
+}
+
+.mask {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 400rpx;
+  background-color: #fff;
+  z-index: 100;
+  border-radius: 30rpx 30rpx 0 0;
+  border-top: 2rpx solid #aaa;
+}
+
+.mask .mask-title {
+  text-align: center;
+  font-size: 40rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.mask .share-warp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mask .share-warp .share-list {
+  position: relative;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.mask .share-warp .share-list .share-btn {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.mask .share-warp .share-list image {
+  width: 100rpx;
+  height: 100rpx;
+  vertical-align: middle;
+  margin-bottom: 20rpx;
+}
+
+.mask .hr {
+  width: 90%;
+  margin: 10rpx auto;
+  height: 2rpx;
+  background-color: #e1e1e1;
+}
+
+.mask .cancel {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #169bd5;
+}
+
+/* modal */
+.cu-modal .cu-bar {
+  min-height: 246rpx;
+}
+
+.cu-modal .action {
+  position: relative;
+  top: -90rpx;
+  right: -10rpx;
+}
+
+.cu-modal .content {
+  position: relative;
+  overflow: visible;
+  margin-top: 20rpx;
+}
+
+.cu-modal .sign {
+  position: absolute;
+  left: -80rpx;
+  top: -20rpx;
+}
+
+.cu-modal .sign image {
+  width: 120rpx;
+  height: 45rpx;
+}
+
+.cu-modal .sign text {
+  position: absolute;
+  left: 25rpx;
+  top: -10rpx;
+}
+
+.cu-modal .content .detail {
+  background-color: #ddd;
+  border-radius: 12rpx;
+  position: relative;
+  right: 80rpx;
+  top: 80rpx;
+  min-width: 600rpx;
+  padding: 15rpx 0;
+}
+
+.modal-close {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.container-btn-copy-wxid {
+  background-color: #efc743;
+}
+
+.btn-copy-wxid {
+  background-color: #66aad8;
+  width: 50%;
+  margin: auto;
+  color: white;
+  font-size: 36rpx;
+  padding: 13rpx;
+  border-radius: 12rpx;
+}
+
+/* feedback-modal */
+
+.feedback-modal .cu-bar {
+  min-height: 100rpx;
+}
+
+.feedback-modal .cu-bar .sign {
+  left: 50rpx;
+  top: 0rpx;
+}
+
+.feedback-modal .cu-bar .action {
+  top: -15rpx;
+  right: -15rpx;
+}
+
+.feedback-modal .cu-bar .sign text {
+  left: 30rpx;
+  top: 2rpx;
+}
+
+.feedback-modal .cu-dialog .title {
+  margin-left: 55rpx;
+  margin-right: 55rpx;
+  text-align: left;
+  font-size: 33rpx;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.feedback-modal .cu-dialog .des {
+  margin-left: 55rpx;
+  margin-right: 55rpx;
+  text-align: left;
+  margin-bottom: 20rpx;
+  color: #666;
+  font-size: 26rpx;
+}
+
+.feedback-modal .cu-dialog .tips {
+  text-align: left;
+  color: white;
+  margin-bottom: 30rpx;
+  font-size: 26rpx;
+}
+
+.feedback-modal radio-group .cu-list {
+  border-radius: 12rpx !important;
+  margin-bottom: 20rpx;
+  margin-left: 55rpx !important;
+  margin-right: 55rpx !important;
+}
+
+.feedback-modal radio-group .cu-item {
+  background-color: #eee !important;
+}
+
+.feedback-modal .btn-copy-wxid {
+  margin-right: 0;
+}
+
+.update-picker {
+  width: 500rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 20rpx auto;
+  background-color: #e1e1e1;
+}

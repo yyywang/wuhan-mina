@@ -1,3 +1,20 @@
 /**app.wxss**/
-@import "colorui/main.wxss";
-@import "colorui/icon.wxss";
+@import 'colorui/main.wxss';
+@import 'colorui/icon.wxss';
+
+/* 海报 */
+canvas {
+  width: 600rpx;
+  height: 900rpx;
+  position: absolute;
+  left: -1000rpx;
+}
+.posterImg {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600rpx;
+  height: 900rpx;
+  transform: translate(-50%, -50%);
+  z-index: 95;
+}

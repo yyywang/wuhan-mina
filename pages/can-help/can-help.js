@@ -9,59 +9,37 @@ Page({
    */
   data: {
     isUpdate: false, // 是否是从更新信息页面跳转过来的
-    catNum: null,
-    dogNum: null,
-    endDate: null, // 时间戳
-    helpDate: null,
+    help_range: null,
+    cost: null,
     location: null,
     trafficCtrl: null,
     phone: null,
-    wxid: null,
-    trafficRange: ['小区外人可进', '本小区才可进'],
-    helpStartDate: null,
-    showEndDate: null // 用与前端展示选择的日期
+    wx_id: null,
+    trafficRange: ['免费', '收费'],
+    note: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    // 从更新信息页面跳转过来的
-    if (options.hasOwnProperty('id')) {
-      this._rqGetSeekHelp(options.id)
-      this.setData({
-        id: options.id,
-        isUpdate: true
-      })
-    }
-  },
+  onLoad: function(options) {},
   onCatInput: function(e) {
     this.setData({
-      catNum: e.detail.value
+      help_range: e.detail.value
     })
   },
   onDogInput: function(e) {
     this.setData({
-      dogNum: e.detail.value
+      cost: e.detail.value
     })
   },
-  onEndDateChange: function(e) {
-    var timestmp = new Date(e.detail.value).getTime() / 1000
+  onNoteInput: function(e) {
     this.setData({
-      showEndDate: e.detail.value,
-      endDate: timestmp
+      note: e.detail.value
     })
   },
-  onHelpDateChange: function(e) {
-    var timestmp = new Date(e.detail.value).getTime() / 1000
-    this.setData({
-      showHelpDate: e.detail.value,
-      helpDate: timestmp
-    })
-  },
+
   onChooseAddressTap: function(e) {
-    // 若是从更新页面跳转过来的，禁止选择位置
-    if (this.data.isUpdate) return
     // 若用户未允许使用位置权限
     // 提示用户允许使用
     wx.getSetting({
@@ -95,14 +73,19 @@ Page({
             address: res.address,
             latitude: res.latitude,
             longitude: res.longitude,
-            addressName: res.name
+            address_name: res.name
           }
         })
       }
     })
   },
-  // 小区管控
+  // 是否收费
   onTrafficChange: function(e) {
+    if (e.detail.value === '0') {
+      this.setData({
+        cost: 0
+      })
+    }
     this.setData({
       trafficCtrl: e.detail.value
     })
@@ -114,26 +97,16 @@ Page({
   },
   onWxIdInput: function(e) {
     this.setData({
-      wxid: e.detail.value
+      wx_id: e.detail.value
     })
   },
   onSubmitTap: function(e) {
-    if (this.data.isUpdate) {
-      if (this._checkEndDate() || this._checkHelpDate()) {
-        // 向服务端发送数据，成功后跳转到首页
-        wx.showLoading({
-          mask: true
-        })
-        this._rqUpdateDate()
-      }
-    } else {
-      if (this._checkAll()) {
-        // 向服务端发送数据，成功后跳转到首页
-        wx.showLoading({
-          mask: true
-        })
-        this._rqAddSeekHelp()
-      }
+    if (this._checkAll()) {
+      // 向服务端发送数据，成功后跳转到首页
+      wx.showLoading({
+        mask: true
+      })
+      this._rqAddSeekHelp()
     }
   },
   /**
@@ -146,26 +119,8 @@ Page({
   _checkAll: function(e) {
     if (!this._checkCatAndDog()) {
       wx.showModal({
-        title: '提示',
-        content: '猫或狗数量最少填一个・ω・',
-        showCancel: false
-      })
-      return false
-    }
-
-    if (!this._checkEndDate()) {
-      wx.showModal({
-        title: '提示',
-        content: '请选择：最后喂养日・ω・',
-        showCancel: false
-      })
-      return false
-    }
-
-    if (!this._checkHelpDate()) {
-      wx.showModal({
-        title: '提示',
-        content: '请选择：需要帮助日期・ω・',
+        title: '喂喂提示',
+        content: '请填写愿帮范围・ω・',
         showCancel: false
       })
       return false
@@ -180,10 +135,17 @@ Page({
       return false
     }
 
-    if (!this._checkTrafficCtrl()) {
+    if (this._checkTrafficCtrl() === 0) {
       wx.showModal({
         title: '提示',
-        content: '请选择：小区管控・ω・',
+        content: '请选择：是否收费・ω・',
+        showCancel: false
+      })
+      return false
+    } else if (this._checkTrafficCtrl() === 1) {
+      wx.showModal({
+        title: '提示',
+        content: '请填写收费金额・ω・',
         showCancel: false
       })
       return false
@@ -214,19 +176,28 @@ Page({
       return false
     }
 
+    if (!this._checkNote()) {
+      wx.showModal({
+        title: '喂喂提示',
+        content: '请填写备注・ω・',
+        showCancel: false
+      })
+      return false
+    }
+
     return true
   },
   _checkCatAndDog(e) {
     var data = this.data
-    return !(data.catNum || data.dogNum) ? false : true
+    return !data.help_range ? false : true
   },
-  _checkEndDate(e) {
+  _checkCost(e) {
     var data = this.data
-    return data.endDate === null ? false : true
+    return !data.cost ? false : true
   },
-  _checkHelpDate(e) {
+  _checkNote(e) {
     var data = this.data
-    return data.helpDate === null ? false : true
+    return !data.note ? false : true
   },
   _checkLocation(e) {
     var data = this.data
@@ -234,7 +205,11 @@ Page({
   },
   _checkTrafficCtrl(e) {
     var data = this.data
-    return data.trafficCtrl === null ? false : true
+    if (data.trafficCtrl === null) {
+      return 0
+    } else if (data.trafficCtrl === '1') {
+      if (!this._checkCost()) return 1
+    }
   },
   _checkPhone(e) {
     var data = this.data
@@ -286,19 +261,17 @@ Page({
   _rqAddSeekHelp: function() {
     var that = this
     var params = {
-      url: 'seek-help',
+      url: 'rescue',
       data: {
-        cat_num: that.data.catNum,
-        dog_num: that.data.dogNum,
-        last_date: that.data.endDate,
-        help_date: that.data.helpDate,
+        help_range: that.data.help_range,
+        cost: that.data.cost,
         address: that.data.location.address,
         latitude: that.data.location.latitude,
         longitude: that.data.location.longitude,
-        address_name: that.data.location.addressName,
-        traffic_control: that.data.trafficCtrl,
+        address_name: that.data.location.address_name,
         phone: that.data.phone,
-        wx_id: that.data.wxid
+        wx_id: that.data.wx_id,
+        note: that.data.note
       },
       type: 'post',
       sCallback: function(e) {
@@ -313,66 +286,11 @@ Page({
             }, 1000)
           }
         })
-        wx.aldstat.sendEvent('求喂养提交成功')
+        wx.aldstat.sendEvent('我能帮提交成功')
       },
       eCallback: function(e) {}
     }
 
-    http.request(params)
-  },
-  // 向服务端请求更新日期数据
-  _rqUpdateDate(e) {
-    var that = this
-    var params = {
-      url: 'seek-help/' + that.data.id,
-      data: {
-        last_date: that.data.endDate,
-        help_date: that.data.helpDate
-      },
-      type: 'put',
-      sCallback(res) {
-        wx.hideLoading()
-        wx.showToast({
-          title: '已更新',
-          success: res => {
-            setTimeout(function() {
-              wx.switchTab({
-                url: '/pages/rescue/rescue'
-              })
-            }, 1000)
-          }
-        })
-        wx.aldstat.sendEvent('更新成功', {
-          更新数据id: that.data.id
-        })
-      }
-    }
-    http.request(params)
-  },
-  _rqGetSeekHelp(id) {
-    var that = this
-    var params = {
-      url: 'seek-help/' + id,
-      type: 'put',
-      sCallback(res) {
-        var endDate = util.formatTimeStamp(res.last_date)
-        var helpDate = util.formatTimeStamp(res.help_date)
-        that.setData({
-          catNum: res.cat_num,
-          dogNum: res.dog_num,
-          endDate: res.last_date,
-          helpDate: res.help_date,
-          showEndDate: endDate,
-          showHelpDate: helpDate,
-          location: {
-            addressName: res.address_name
-          },
-          trafficCtrl: res.traffic_ctrl == '本小区才可进' ? 1 : 0,
-          phone: res.phone,
-          wxid: res.wx_id
-        })
-      }
-    }
     http.request(params)
   }
 })
