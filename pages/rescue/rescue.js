@@ -207,6 +207,45 @@ Page({
       })
     }
   },
+  //我能帮
+  onCanHelpTap: function(e) {
+    let that = this
+    if (app.globalData.userInfo) {
+      wx.navigateTo({
+        url: '/pages/can-help/can-help'
+      })
+      wx.aldstat.sendEvent('点击我能帮', {})
+    } else {
+      wx.getUserInfo({
+        withCredentials: 'false',
+        lang: 'zh_CN',
+        success: result => {
+          app.globalData.userInfo = result.userInfo
+          wx.navigateTo({
+            url: '/pages/can-help/can-help'
+          })
+          wx.aldstat.sendEvent('点击我能帮', {})
+          that.updateUserInfo(result.userInfo)
+        },
+        fail: () => {
+          wx.showModal({
+            title: '喂喂提示',
+            content: '登录才可以发布能帮信息哦(*^_^*)',
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: result => {
+              if (result.confirm) {
+              }
+            },
+            fail: () => {},
+            complete: () => {}
+          })
+        },
+        complete: () => {}
+      })
+    }
+  },
   onCommunicateTap: function(e) {
     wx.navigateToMiniProgram({
       appId: 'wx02dc77299f086017',

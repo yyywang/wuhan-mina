@@ -152,9 +152,9 @@
         <view>
           <image src="../../images/phone.png" mode="aspectFit"></image>
           电话
-          <button open-type="getUserInfo" bindgetuserinfo="onPhoneTap" data-phone="{{item.rescuer.phone}}" ></button>
+          <button open-type="getUserInfo" bindgetuserinfo="onPhoneTap" data-phone="{{item.phone}}" ></button>
         </view>
-        <view data-wxid="{{item.rescuer.wx_id}}" bindtap="onWxTap">
+        <view data-wxid="{{item.wx_id}}" bindtap="onWxTap">
           <image src="../../images/weixin.png" mode="aspectFit"></image>
           微信
         </view>
@@ -250,7 +250,9 @@
 </view>
 <!-- E=Modal -->
 <!-- S=跳转按钮 -->
-<image class="seek-help" src="/images/seek_help.png" mode="aspectFit"></image>
-<button open-type="getUserInfo" bindgetuserinfo="onSeekHelpTap" class="seek-help seek-help-btn"></button>
+<image class="seek-help" src="/images/seek_help.png" mode="aspectFit" wx:if="{{typeIndex==='1'}}"></image>
+<button open-type="getUserInfo" bindgetuserinfo="onSeekHelpTap" class="seek-help seek-help-btn" wx:if="{{typeIndex==='1'}}"></button>
+<image class="seek-help" src="/images/can_help.png" mode="aspectFit" wx:if="{{typeIndex==='2'}}"></image>
+<button open-type="getUserInfo" bindgetuserinfo="onCanHelpTap" class="seek-help seek-help-btn" wx:if="{{typeIndex==='2'}}"></button>
 <image class="communicate" src="/images/communicate.png" mode="aspectFit" bindtap="onCommunicateTap"></image>
 <!-- E=跳转按钮 -->
