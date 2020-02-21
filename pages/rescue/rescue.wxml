@@ -128,7 +128,7 @@
 
 <!-- S=信息卡片 我能帮-->
 <view wx:else class="container-card">
-  <view class="card help-card" wx:for="{{canHelp.items}}">
+  <view class="card help-card" wx:for="{{searchResult.items || canHelp.items  }}">
       <view class="header">
         <view class="title">
           <view class="user-wrap">

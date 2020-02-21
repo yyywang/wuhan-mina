@@ -306,18 +306,36 @@ Page({
         wx.showToast({
           title: '已提交',
           success: res => {
-            setTimeout(function() {
-              wx.switchTab({
-                url: '/pages/rescue/rescue'
-              })
-            }, 1000)
+            wx.getSetting({
+              withSubscriptions: true,
+              success: res => {
+                if (res.authSetting['scope.subscribeMessage']) {
+                  wx.switchTab({
+                    url: '/pages/rescue/rescue'
+                  })
+                } else {
+                  wx.requestSubscribeMessage({
+                    tmplIds: [''],
+                    success(res) {
+                      wx.switchTab({
+                        url: '/pages/rescue/rescue'
+                      })
+                    },
+                    fail: res => {
+                      wx.switchTab({
+                        url: '/pages/rescue/rescue'
+                      })
+                    }
+                  })
+                }
+              }
+            })
           }
         })
         wx.aldstat.sendEvent('求喂养提交成功')
       },
       eCallback: function(e) {}
     }
-
     http.request(params)
   },
   // 向服务端请求更新日期数据

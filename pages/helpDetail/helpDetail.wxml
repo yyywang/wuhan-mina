@@ -59,7 +59,7 @@
       <view class="share-list">
         <image src="/images/weixin_green.png" />
         <view>微信好友</view>
-        <button open-type="share" class="share-btn"></button>
+        <button open-type="share" class="share-btn2"></button>
       </view>
     </view>
     <view class="hr"></view>

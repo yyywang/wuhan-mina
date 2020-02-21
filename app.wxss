@@ -16,5 +16,5 @@ canvas {
   width: 600rpx;
   height: 900rpx;
   transform: translate(-50%, -50%);
-  z-index: 95;
+  z-index: 98;
 }

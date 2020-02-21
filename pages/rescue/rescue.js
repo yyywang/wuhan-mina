@@ -38,40 +38,7 @@ Page({
   onLoad: function(options) {
     var that = this
     token.verify()
-    if (!wx.getStorageSync('token')) {
-      setTimeout(() => {
-        wx.getSetting({
-          success(res) {
-            // 用户未允许获取位置信息
-            if (!res.authSetting['scope.userLocation']) {
-              // 发起申请授权请求
-              wx.authorize({
-                scope: 'scope.userLocation',
-                // 用户允许
-                success: res => {
-                  // 通过用户当前位置请求数据
-                  that._rqDataBySelfLocation()
-                  that.setData({
-                    hasPosition: true
-                  })
-                },
-                // 用户不允许
-                fail(res) {
-                  // 通过默认地区请求数据
-                  that._rqDataByPosition()
-                }
-              })
-              // 用户已允许获取位置信息
-            } else {
-              that._rqDataBySelfLocation()
-              that.setData({
-                hasPosition: true
-              })
-            }
-          }
-        })
-      }, 1000)
-    } else {
+    setTimeout(() => {
       wx.getSetting({
         success(res) {
           // 用户未允许获取位置信息
@@ -102,7 +69,7 @@ Page({
           }
         }
       })
-    }
+    }, 1000)
   },
   //上拉加载
   onReachBottom: function(e) {

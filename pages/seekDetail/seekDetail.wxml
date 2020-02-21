@@ -118,7 +118,7 @@
     <!-- s=文案 -->
     <view class="copywriting">
       <view>我们是谁</view>
-      喂喂我猫狗帮喂服务平台，目前已有133人发出救助请求，有222人愿意帮助他人，累计有22条生命获得救助，邀请你和我们一起做点什么。
+      喂喂我猫狗帮喂服务平台，目前已有{{content.statistics.supplicant_num}}人发出救助请求，有{{content.statistics.rescuer_num}}人愿意帮助他人，累计有{{content.statistics.life_num}}条生命获得救助，邀请你和我们一起做点什么。
     </view>
     <!-- e=文案 -->
     <!-- s=按钮组 -->
