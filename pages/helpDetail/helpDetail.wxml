@@ -40,7 +40,7 @@
       <view class="form-label">状态</view>
       <view class="form-input">
         <view class="place-holder choose-location disabled status">
-          {{content.is_cancel?'已取消':'帮助中'}}
+          {{content.cancel?'已取消':'帮助中'}}
         </view>
       </view>
     </view>
