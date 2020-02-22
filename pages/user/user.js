@@ -133,6 +133,7 @@ Page({
   updateUserInfo(item) {
     let params = {
       url: 'user/profile',
+      type: 'put',
       data: {
         wx_name: item.nickName,
         wx_avatar: item.avatarUrl,

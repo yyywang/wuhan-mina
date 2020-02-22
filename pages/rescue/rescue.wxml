@@ -76,7 +76,7 @@
       <view class="content">
         <!-- 显示：区 + 详细地址 -->
         <view class="address">
-          <view>
+          <view class="address-name">
             {{item.location.city}} - {{item.location.district}} - {{item.location.address_name}}
           </view>
           <view class="rescued" wx:if="{{item.rescued}}">{{item.rescued?'救助过':''}}</view>
@@ -141,7 +141,7 @@
       <view class="content">
         <!-- 显示：区 + 详细地址 -->
         <view class="address">
-          <view>{{item.location.city}} - {{item.location.district}} - {{item.location.address_name}}</view>
+          <view class="address-name">{{item.location.city}} - {{item.location.district}} - {{item.location.address_name}}</view>
           <view class="help-range">附近{{item.help_range}}km</view>
         </view>
         <view class="animal text-bold">

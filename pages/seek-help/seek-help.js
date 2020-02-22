@@ -304,32 +304,35 @@ Page({
       sCallback: function(e) {
         wx.hideLoading()
         wx.showToast({
-          title: '已提交',
+          title: '已提交'
+        })
+        wx.getSetting({
+          withSubscriptions: true,
           success: res => {
-            wx.getSetting({
-              withSubscriptions: true,
-              success: res => {
-                if (res.authSetting['scope.subscribeMessage']) {
+            if (res.authSetting['scope.subscribeMessage']) {
+              wx.switchTab({
+                url: '/pages/rescue/rescue'
+              })
+            } else {
+              wx.requestSubscribeMessage({
+                tmplIds: [
+                  'Rm2KNe4VCq4zaI0kBBPn0NOPTBnCG_At21NoBM33XZU',
+                  'Rm2KNe4VCq4zaI0kBBPn0H3_7AqoL-M7VUlAyK75rh8'
+                ],
+                success(res) {
+                  console.log(res)
                   wx.switchTab({
                     url: '/pages/rescue/rescue'
                   })
-                } else {
-                  wx.requestSubscribeMessage({
-                    tmplIds: [''],
-                    success(res) {
-                      wx.switchTab({
-                        url: '/pages/rescue/rescue'
-                      })
-                    },
-                    fail: res => {
-                      wx.switchTab({
-                        url: '/pages/rescue/rescue'
-                      })
-                    }
+                },
+                fail: res => {
+                  console.log(res)
+                  wx.switchTab({
+                    url: '/pages/rescue/rescue'
                   })
                 }
-              }
-            })
+              })
+            }
           }
         })
         wx.aldstat.sendEvent('求喂养提交成功')

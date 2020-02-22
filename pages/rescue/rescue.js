@@ -149,11 +149,11 @@ Page({
         lang: 'zh_CN',
         success: result => {
           app.globalData.userInfo = result.userInfo
+          that.updateUserInfo(result.userInfo)
           wx.navigateTo({
             url: '/pages/seek-help/seek-help'
           })
           wx.aldstat.sendEvent('点击求喂养', {})
-          that.updateUserInfo(result.userInfo)
         },
         fail: () => {
           wx.showModal({
@@ -188,11 +188,11 @@ Page({
         lang: 'zh_CN',
         success: result => {
           app.globalData.userInfo = result.userInfo
+          that.updateUserInfo(result.userInfo)
           wx.navigateTo({
             url: '/pages/can-help/can-help'
           })
           wx.aldstat.sendEvent('点击我能帮', {})
-          that.updateUserInfo(result.userInfo)
         },
         fail: () => {
           wx.showModal({
@@ -635,6 +635,7 @@ Page({
   updateUserInfo(item) {
     let params = {
       url: 'user/profile',
+      type: 'put',
       data: {
         wx_name: item.nickName,
         wx_avatar: item.avatarUrl,

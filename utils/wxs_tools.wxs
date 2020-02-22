@@ -23,9 +23,9 @@ function formatDistance(distance) {
 
 function formatSpeed(speed) {
   if (speed < 3) {
-    return '还差' + (3 - speed) + '人升至中速'
+    return '还差' + (3 - speed) + '个助力升至中速'
   } else if (speed >= 3 && speed < 8) {
-    return '还差' + (8 - speed) + '人升至高速'
+    return '还差' + (8 - speed) + '个助力升至高速'
   } else {
     return '已升至高速'
   }

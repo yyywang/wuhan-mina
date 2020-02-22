@@ -229,11 +229,17 @@
   margin-bottom: 10rpx;
 }
 
+.card .content .address .address-name {
+  width: 500rpx;
+  line-height: 40rpx;
+}
+
 .card .content .rescued {
-  padding: 2rpx 10rpx;
+  padding: 1rpx 9rpx;
   border: 2rpx solid #df7d6c;
   color: #df7d6c;
   border-radius: 8rpx;
+  font-size: 22rpx;
 }
 
 .card .content .animal {
@@ -324,7 +330,7 @@
 
 .seek-help,
 .communicate {
-  padding: 20rpx;
+  padding: 10rpx;
   width: 130rpx !important;
   height: 130rpx;
   position: fixed;

@@ -19,12 +19,12 @@
       <view>中速</view>
       <view>高速</view>
     </view>
-    <progress border-radius="4" color="#efc743" active="true" percent="{{content.speed/8*100}}" />
+    <progress color="#efc743" active="true" percent="{{content.speed/8*100}}" />
     <view class="speed-msg">{{tools.formatSpeed(content.speed)}}</view>
   </view>
   <!-- e=速度 -->
   <!-- s=自己打开 -->
-  <view class="am-show-wrap" wx:if="{{isSelf===1}}">
+  <view class="am-show-wrap" wx:if="{{isSelf===1||isSelf==='0'&&content.is_self}}">
     <view class="am-show">
       <view class="am-title">
         <view class="title-msg">求喂信息</view>
@@ -108,11 +108,15 @@
     </button>
     <view class="helpers-wrap" wx:if="{{content.has_help}}">
       <view class="help-title">已有{{content.helpers.length}}名用户帮好友助力</view>
-      <scroll-view scroll-x>
-        <view class="helper-list" wx:for="{{content.helpers}}">
-          <image src="{{item.wx_avatar}}" />
-        </view>
-      </scroll-view>
+      <view class="scroll-wrap">
+        <scroll-view scroll-x>
+          <view class="helper-list" wx:for="{{content.helpers}}">
+            <image src="{{item.wx_avatar}}" />
+          </view>
+        </scroll-view>
+        <image src="/images/more_user.png" mode="widthFix" />
+      </view>
+      
     </view>
     <!-- e=按钮 -->
     <!-- s=文案 -->

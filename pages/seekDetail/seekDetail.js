@@ -25,37 +25,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (!wx.getStorageSync('token')) {
-      setTimeout(() => {
-        //分享打开
-        if (options.isSelf) {
-          this.setData({
-            isSelf: options.isSelf,
-            id: options.id
-          })
-          this.getBoostData()
-        } else {
-          this.setData({
-            id: options.id
-          })
-          this.getData()
-        }
-      }, 1000)
-    } else {
+    let that = this
+    setTimeout(() => {
       //分享打开
       if (options.isSelf) {
         this.setData({
           isSelf: options.isSelf,
           id: options.id
         })
-        this.getBoostData()
+        this.getBoostData(function() {
+          that.getCode(function() {
+            that.createCanvas()
+          })
+        })
       } else {
         this.setData({
           id: options.id
         })
-        this.getData()
+        this.getData(function() {
+          that.getCode(function() {
+            that.createCanvas()
+          })
+        })
       }
-    }
+    }, 1000)
   },
   //获取数据
   getData(callback) {
@@ -66,7 +59,6 @@ Page({
         that.setData({
           content: res.data
         })
-        that.createCanvas()
         callback && callback()
       }
     }
@@ -372,6 +364,29 @@ Page({
     )
     ctx.fillText('的朋友帮忙喂养', 30, 200, 200)
     ctx.draw(true)
+    /* 二维码 */
+    wx.getImageInfo({
+      src: that.data.codeImg,
+      success: res => {
+        ctx.drawImage(res.path, 105, 280, 100, 100)
+        ctx.draw(
+          true,
+          setTimeout(function() {
+            wx.canvasToTempFilePath({
+              canvasId: 'myCanvas',
+              success: function(res) {
+                that.tmpPath = res.tempFilePath
+              }
+            })
+          }, 500)
+        )
+        ctx.restore()
+      },
+      fail: res => {
+        console.log(res)
+      }
+    })
+
     /* 最后生成 */
     setTimeout(() => {
       wx.canvasToTempFilePath({
@@ -482,6 +497,26 @@ Page({
         wx.aldstat.sendEvent('更新成功', {
           更新数据id: that.data.id
         })
+      }
+    }
+    http.request(params)
+  },
+  //获取二维码
+  getCode(callback) {
+    //common/wx/unlimit-code
+    let that = this
+    var params = {
+      url: 'common/wx/unlimit-code',
+      data: {
+        scene: 'id=' + this.data.id + '&isSelf=0',
+        page: 'pages/seekDetail/seekDetail'
+      },
+      type: 'post',
+      sCallback(res) {
+        that.setData({
+          codeImg: res.data.img_url
+        })
+        callback && callback()
       }
     }
     http.request(params)

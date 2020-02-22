@@ -30,7 +30,7 @@
         <input type="text" disabled maxlength='20' confirm-type="done" value="{{content.wx_id}}"></input>
       </view>
     </view>
-    <view class="form-group flex justify-between align-center margin-top-sm">
+    <view class="form-group flex justify-between align-center margin-top-sm" wx:if="{{!posterFlag}}">
       <view class="form-label">备注</view>
       <view class="form-input">
         <textarea disabled maxlength='50' value="{{content.note}}"></textarea>
