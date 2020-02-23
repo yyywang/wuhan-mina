@@ -1,6 +1,6 @@
 <view class="container">
   <view class="am-show">
-    <view class="form-group flex justify-between align-center">
+    <view class="form-group flex justify-between ">
       <view class="form-label">地址</view>
       <view class="form-input">
         <view class="place-holder choose-location disabled">{{content.location.address_name}}</view>
@@ -30,7 +30,7 @@
         <input type="text" disabled maxlength='20' confirm-type="done" value="{{content.wx_id}}"></input>
       </view>
     </view>
-    <view class="form-group flex justify-between align-center margin-top-sm" wx:if="{{!posterFlag}}">
+    <view class="form-group flex justify-between  margin-top-sm" wx:if="{{!posterFlag}}">
       <view class="form-label">备注</view>
       <view class="form-input">
         <textarea disabled maxlength='50' value="{{content.note}}"></textarea>
@@ -69,7 +69,10 @@
   <!-- e=遮罩 -->
   <!-- s=海报 -->
   <canvas canvas-id="myCanvas"></canvas>
-  <image src="{{posterImg}}" wx:if="{{posterFlag}}" class="posterImg" bind:tap="closePoster" />
+  <view class="posterImg-wrap" wx:if="{{posterFlag}}">
+    <image src="{{posterImg}}" class="posterImg" bind:tap="closePoster" />
+    <view class="poster-title">图片已保存至手机，快去分享吧</view>
+  </view>
   <view class="black-wrap" wx:if="{{posterFlag}}"></view>
   <!-- e=海报 -->
 </view>

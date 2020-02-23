@@ -14,13 +14,23 @@ Page({
     content: {},
     shareFlag: false, //遮罩
     posterFlag: false,
-    posterImg: ''
+    posterImg: '',
+    windowWidth: 0,
+    totalHeight: 0,
+    totalWeight: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.getSystemInfo({
+      success: res => {
+        this.setData({
+          windowWidth: res.windowWidth
+        })
+      }
+    })
     this.setData({
       id: options.id
     })
@@ -141,9 +151,14 @@ Page({
   createCanvas() {
     let userInfo = app.globalData.userInfo
     let that = this
+    let scale = this.data.windowWidth / 375.0
+    that.setData({
+      totalHeight: 900 * scale,
+      totalWeight: 600 * scale
+    })
     // 获取Canvas
     let ctx = wx.createCanvasContext('myCanvas')
-    ctx.drawImage('/images/poster2.jpg', 0, 0, 300, 450)
+    ctx.drawImage('/images/poster2.jpg', 0, 0, 300 * scale, 450 * scale)
     ctx.draw()
     /* 头像 */
     wx.getImageInfo({
@@ -151,10 +166,10 @@ Page({
       success: res => {
         ctx.save()
         ctx.beginPath()
-        ctx.arc(50, 68, 15, 0, 2 * Math.PI, false)
+        ctx.arc(50 * scale, 68 * scale, 15 * scale, 0, 2 * Math.PI, false)
         ctx.clip()
         ctx.closePath()
-        ctx.drawImage(res.path, 35, 53, 30, 30)
+        ctx.drawImage(res.path, 35 * scale, 53 * scale, 30 * scale, 30 * scale)
         ctx.draw(
           true,
           setTimeout(function() {
@@ -172,7 +187,7 @@ Page({
     /* 昵称 */
     ctx.setFillStyle('#000')
     ctx.setFontSize(20)
-    ctx.fillText(userInfo.nickName, 70, 78, 200)
+    ctx.fillText(userInfo.nickName, 70 * scale, 78 * scale, 200 * scale)
     ctx.draw(true)
     /* 最后生成 */
     setTimeout(() => {

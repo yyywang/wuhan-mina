@@ -59,8 +59,8 @@ page {
   color: white;
   background-color: #66aad9;
   border-radius: 6rpx;
-  padding: 10rpx;
-  font-size: 23rpx;
+  padding: 6rpx 20rpx;
+  font-size: 28rpx;
   font-weight: 400;
 }
 
@@ -68,14 +68,14 @@ page {
   color: white;
   background-color: #ec8171;
   border-radius: 6rpx;
-  padding: 10rpx;
-  font-size: 23rpx;
+  padding: 6rpx 20rpx;
+  font-size: 28rpx;
   font-weight: 400;
 }
 
 .card .cancel {
-  background-color: #fff !important;
-  color: #999 !important;
+  background-color: #66aad9 !important;
+  color: #fff !important;
 }
 
 .card .content {

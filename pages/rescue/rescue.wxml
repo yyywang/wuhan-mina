@@ -2,7 +2,7 @@
 <wxs src="../../utils/wxs_tools.wxs" module="tools" />
 <!-- S=轮播 求喂养 -->
 <swiper wx:if="{{typeIndex==='1'}}" class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{swiperList}}" wx:for-index="idx" wx:key="idx">
+  <swiper-item wx:for="{{swiperList}}" wx:for-index="idx" wx:key="idx"  bindtap="onSwiperTap" data-idx="{{idx}}">
     <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
     <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
   </swiper-item>
@@ -11,7 +11,7 @@
 
 <!-- S=轮播 我能帮 -->
 <swiper wx:else class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-  <swiper-item wx:for="{{swiperList2}}" wx:for-index="idx" wx:key="idx">
+  <swiper-item wx:for="{{swiperList2}}" wx:for-index="idx" wx:key="idx"  bindtap="onSwiperTap" data-idx="{{idx}}">
     <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
     <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
   </swiper-item>
@@ -77,7 +77,7 @@
         <!-- 显示：区 + 详细地址 -->
         <view class="address">
           <view class="address-name">
-            {{item.location.city}} - {{item.location.district}} - {{item.location.address_name}}
+            {{item.location.city}}{{item.location.district}}{{item.location.address_name}}
           </view>
           <view class="rescued" wx:if="{{item.rescued}}">{{item.rescued?'救助过':''}}</view>
         </view>
@@ -141,7 +141,7 @@
       <view class="content">
         <!-- 显示：区 + 详细地址 -->
         <view class="address">
-          <view class="address-name">{{item.location.city}} - {{item.location.district}} - {{item.location.address_name}}</view>
+          <view class="address-name">{{item.location.city}}{{item.location.district}}{{item.location.address_name}}</view>
           <view class="help-range">附近{{item.help_range}}km</view>
         </view>
         <view class="animal text-bold">

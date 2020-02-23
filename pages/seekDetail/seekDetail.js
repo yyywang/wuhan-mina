@@ -18,7 +18,10 @@ Page({
     showUpdate: false,
     showEndDate: '',
     showHelpDate: '',
-    updateId: ''
+    updateId: '',
+    windowWidth: 0,
+    totalHeight: 0,
+    totalWeight: 0
   },
 
   /**
@@ -26,6 +29,14 @@ Page({
    */
   onLoad: function(options) {
     let that = this
+    wx.getSystemInfo({
+      success: res => {
+        that.setData({
+          windowWidth: res.windowWidth
+        })
+      }
+    })
+
     setTimeout(() => {
       //分享打开
       if (options.isSelf) {
@@ -312,9 +323,14 @@ Page({
   createCanvas() {
     let userInfo = app.globalData.userInfo
     let that = this
+    let scale = this.data.windowWidth / 375.0
+    that.setData({
+      totalHeight: 900 * scale,
+      totalWeight: 600 * scale
+    })
     // 获取Canvas
     let ctx = wx.createCanvasContext('myCanvas')
-    ctx.drawImage('/images/poster1.jpg', 0, 0, 300, 450)
+    ctx.drawImage('/images/poster1.jpg', 0, 0, 300 * scale, 450 * scale)
     ctx.draw()
     /* 头像 */
     wx.getImageInfo({
@@ -322,10 +338,10 @@ Page({
       success: res => {
         ctx.save()
         ctx.beginPath()
-        ctx.arc(50, 68, 15, 0, 2 * Math.PI, false)
+        ctx.arc(50 * scale, 68 * scale, 15 * scale, 0, 2 * Math.PI, false)
         ctx.clip()
         ctx.closePath()
-        ctx.drawImage(res.path, 35, 53, 30, 30)
+        ctx.drawImage(res.path, 35 * scale, 53 * scale, 30 * scale, 30 * scale)
         ctx.draw(
           true,
           setTimeout(function() {
@@ -343,32 +359,42 @@ Page({
     /* 昵称 */
     ctx.setFillStyle('#000')
     ctx.setFontSize(20)
-    ctx.fillText(userInfo.nickName, 70, 78, 200)
+    ctx.fillText(userInfo.nickName, 70 * scale, 78 * scale, 200 * scale)
     ctx.draw(true)
     /* 文字内容 */
     ctx.setFillStyle('#fff')
     ctx.setFontSize(20)
-    ctx.fillText(
-      '我的' +
-        (that.data.content.cat_num ? that.data.content.cat_num + '猫' : '') +
-        (that.data.content.dog_num ? that.data.content.dog_num + '狗' : ''),
-      30,
-      140,
-      200
-    )
+    let posterCat
+    if (that.data.content.cat_num === 0) {
+      posterCat = ''
+    } else if (that.data.content.cat_num === 1) {
+      posterCat = '猫'
+    } else {
+      posterCat = that.data.content.cat_num + '猫'
+    }
+    let posterDog
+    if (that.data.content.dog_num === 0) {
+      posterDog = ''
+    } else if (that.data.content.dog_num === 1) {
+      posterDog = '狗'
+    } else {
+      posterDog = that.data.content.dog_num + '狗'
+    }
+
+    ctx.fillText('我的' + posterCat + posterDog, 30 * scale, 140 * scale, 200 * scale)
     ctx.fillText(
       '急需' + that.data.content.location.city + that.data.content.location.district,
-      30,
-      170,
-      200
+      30 * scale,
+      170 * scale,
+      200 * scale
     )
-    ctx.fillText('的朋友帮忙喂养', 30, 200, 200)
+    ctx.fillText('的朋友帮忙喂养', 30 * scale, 200 * scale, 200 * scale)
     ctx.draw(true)
     /* 二维码 */
     wx.getImageInfo({
       src: that.data.codeImg,
       success: res => {
-        ctx.drawImage(res.path, 105, 280, 100, 100)
+        ctx.drawImage(res.path, 105 * scale, 280 * scale, 100 * scale, 100 * scale)
         ctx.draw(
           true,
           setTimeout(function() {

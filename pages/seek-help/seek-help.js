@@ -301,7 +301,8 @@ Page({
         wx_id: that.data.wxid
       },
       type: 'post',
-      sCallback: function(e) {
+      sCallback: res => {
+        let seekRes = res
         wx.hideLoading()
         wx.showToast({
           title: '已提交'
@@ -310,8 +311,8 @@ Page({
           withSubscriptions: true,
           success: res => {
             if (res.authSetting['scope.subscribeMessage']) {
-              wx.switchTab({
-                url: '/pages/rescue/rescue'
+              wx.navigateTo({
+                url: '/pages/seekDetail/seekDetail?id=' + seekRes.data.id
               })
             } else {
               wx.requestSubscribeMessage({
@@ -321,14 +322,14 @@ Page({
                 ],
                 success(res) {
                   console.log(res)
-                  wx.switchTab({
-                    url: '/pages/rescue/rescue'
+                  wx.navigateTo({
+                    url: '/pages/seekDetail/seekDetail?id=' + seekRes.data.id
                   })
                 },
                 fail: res => {
                   console.log(res)
-                  wx.switchTab({
-                    url: '/pages/rescue/rescue'
+                  wx.navigateTo({
+                    url: '/pages/seekDetail/seekDetail?id=' + seekRes.data.id
                   })
                 }
               })

@@ -1,5 +1,5 @@
 .container {
-  padding: 20rpx 0;
+  padding: 30rpx 0;
 }
 
 .am-show {
@@ -33,6 +33,9 @@
 
 .form-label {
   width: 30%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
 }
 
 .form-input {
@@ -48,7 +51,7 @@
   padding-right: 20rpx;
   height: auto;
   color: #333;
-  font-size: 24rpx;
+  font-size: 30rpx;
   min-height: 55rpx !important;
   line-height: 55rpx;
 }
@@ -96,15 +99,16 @@ textarea[disabled] {
 
 .cancel-btn,
 .share-btn {
-  width: 650rpx;
+  width: 600rpx;
   margin: 50rpx auto;
-  height: 90rpx;
-  line-height: 90rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   color: #999;
   text-align: center;
-  border-radius: 40rpx;
+  border-radius: 50rpx;
   background-color: #fff;
-  border: 2rpx solid #aaa;
+  font-size: 34rpx;
+  box-shadow: 2rpx 2rpx 4rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
 .statement {
@@ -115,10 +119,12 @@ textarea[disabled] {
 }
 
 .share-btn {
-  margin-top: 300rpx;
+  margin-top: 200rpx;
   color: #fff;
   background-color: #efc743;
-  border: none;
+}
+
+.cancel-btn {
 }
 
 /* 分享 */
@@ -183,14 +189,16 @@ textarea[disabled] {
 
 .mask .hr {
   width: 90%;
-  margin: 10rpx auto;
+  margin: 10rpx auto 0;
   height: 2rpx;
   background-color: #e1e1e1;
 }
 
 .mask .cancel {
   text-align: center;
-  height: 80rpx;
-  line-height: 80rpx;
-  color: #169bd5;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  background-color: #e4c147;
+  box-shadow: 0 -2rpx 4rpx 4rpx rgba(0, 0, 0, 0.1);
 }

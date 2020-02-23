@@ -14,7 +14,7 @@
       </view>
       <view class="content">
         <!-- 显示：区 + 详细地址 -->
-        <view class="address">{{item.location.district}} - {{item.location.address_name}}</view>
+        <view class="address">{{item.location.city}}{{item.location.district}}{{item.location.address_name}}</view>
         <view class="animal text-bold">
           {{item.cat_num ? item.cat_num + '只猫' : ''}}{{item.dog_num ? item.dog_num + '只狗' : '' }}
         </view>

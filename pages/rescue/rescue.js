@@ -665,5 +665,12 @@ Page({
       showHelpDate: e.detail.value,
       helpDate: timestmp
     })
+  },
+  //banner跳转
+  onSwiperTap(e) {
+    var idx = e.currentTarget.dataset.idx
+    wx.navigateTo({
+      url: '/pages/webview/webview?idx=' + idx
+    })
   }
 })

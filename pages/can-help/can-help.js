@@ -260,6 +260,30 @@ Page({
   // 向服务器请求添加SeekHelp数据
   _rqAddSeekHelp: function() {
     var that = this
+    // wx.getSetting({
+    //   withSubscriptions: true,
+    //   success: res => {
+    //     console.log(res)
+    //     if (res.authSetting['scope.subscribeMessage']) {
+    //       console.log(res)
+    //     } else {
+    //       wx.requestSubscribeMessage({
+    //         tmplIds: [
+    //           'Rm2KNe4VCq4zaI0kBBPn0NOPTBnCG_At21NoBM33XZU',
+    //           'Rm2KNe4VCq4zaI0kBBPn0H3_7AqoL-M7VUlAyK75rh8'
+    //         ],
+    //         success(res) {
+    //           console.log(res)
+
+    //         },
+    //         fail: res => {
+    //           console.log(res)
+
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
 
     var params = {
       url: 'rescue',
@@ -275,20 +299,19 @@ Page({
         note: that.data.note
       },
       type: 'post',
-      sCallback: function(e) {
+      sCallback: res => {
+        let helpRes = res
         wx.hideLoading()
         wx.showToast({
           title: '已提交'
         })
-
         wx.getSetting({
           withSubscriptions: true,
           success: res => {
-            console.log(res.subscriptionsSetting)
+            console.log(res)
             if (res.authSetting['scope.subscribeMessage']) {
-              console.log(res.authSetting)
-              wx.switchTab({
-                url: '/pages/rescue/rescue'
+              wx.navigateTo({
+                url: '/pages/helpDetail/helpDetail?id=' + helpRes.data.id
               })
             } else {
               wx.requestSubscribeMessage({
@@ -298,14 +321,14 @@ Page({
                 ],
                 success(res) {
                   console.log(res)
-                  wx.switchTab({
-                    url: '/pages/rescue/rescue'
+                  wx.navigateTo({
+                    url: '/pages/helpDetail/helpDetail?id=' + helpRes.data.id
                   })
                 },
                 fail: res => {
                   console.log(res)
-                  wx.switchTab({
-                    url: '/pages/rescue/rescue'
+                  wx.navigateTo({
+                    url: '/pages/helpDetail/helpDetail?id=' + helpRes.data.id
                   })
                 }
               })

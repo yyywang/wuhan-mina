@@ -13,7 +13,7 @@
       <!-- 显示：区 + 详细地址 -->
       <view class="address">
         <view>{{item.location.district}} - {{item.location.address_name}}</view>
-        <view class="help-range">附近{{item.help_range/1000}}km</view>
+        <view class="help-range">附近{{item.help_range}}km</view>
       </view>
       <view class="animal text-bold">{{item.note}}</view>
     </view>

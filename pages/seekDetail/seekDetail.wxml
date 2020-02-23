@@ -154,7 +154,10 @@
   <!-- e=遮罩 -->
   <!-- s=海报 -->
   <canvas canvas-id="myCanvas"></canvas>
-  <image src="{{posterImg}}" wx:if="{{posterFlag}}" class="posterImg" bind:tap="closePoster" />
+  <view class="posterImg-wrap" wx:if="{{posterFlag}}">
+    <image src="{{posterImg}}" class="posterImg" bind:tap="closePoster" />
+    <view class="poster-title">图片已保存至手机，快去分享吧</view>
+  </view>
   <view class="black-wrap" wx:if="{{posterFlag}}"></view>
   <!-- e=海报 -->
   <!-- s=更新 -->
