@@ -4,6 +4,7 @@ page {
 }
 .container {
   overflow: hidden;
+  padding-bottom: 60rpx;
 }
 /* 火箭 */
 .rocket-wrap {
@@ -39,7 +40,8 @@ page {
 }
 
 .speed-wrap .speed-title {
-  font-size: 30rpx;
+  font-size: 34rpx;
+  font-weight: bold;
 }
 
 .speed-wrap .progress-text {
@@ -53,12 +55,13 @@ page {
 }
 
 .speed-wrap progress {
+  border: 2rpx solid #000;
   margin: 10rpx 0;
 }
 
 .speed-wrap .speed-msg {
   margin-top: 20rpx;
-  color: #d7857a;
+  color: #CF8976;
 }
 
 /* 自己打开 具体内容 */
@@ -78,10 +81,12 @@ page {
   align-items: center;
   height: 40rpx;
   margin: 10rpx auto;
+  padding: 0 20rpx;
+
 }
 
 .am-title .title-msg {
-  font-size: 28rpx;
+  font-size: 34rpx;
   font-weight: bold;
 }
 
@@ -144,15 +149,15 @@ picker[disabled] {
 }
 
 .cancel-btn {
-  width: 650rpx;
+  width: 600rpx;
   margin: 50rpx auto;
-  height: 90rpx;
-  line-height: 90rpx;
-  color: #999;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #666;
   text-align: center;
-  border-radius: 40rpx;
-  background-color: #fff;
-  border: 2rpx solid #aaa;
+  border-radius: 80rpx;
+  background-color: #F0EDF1;
+  box-shadow: 0rpx 0rpx 6rpx 2rpx rgba(0, 0, 0, 0.1);
 }
 
 .statement {
@@ -172,6 +177,7 @@ picker[disabled] {
   padding: 30rpx 0;
   background-color: #fff;
   z-index: 89;
+  box-shadow: 0 -2rpx 6rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 
 .share-btn view {
@@ -203,6 +209,7 @@ picker[disabled] {
   text-align: center;
   line-height: 60rpx;
   font-size: 38rpx;
+  font-weight: bold;
   color: #e3c048;
 }
 
@@ -264,6 +271,7 @@ picker[disabled] {
 .copywriting {
   margin: 40rpx auto;
   line-height: 40rpx;
+  font-weight: bold;
 }
 
 .copywriting view {
@@ -374,7 +382,7 @@ picker[disabled] {
   height: 100rpx;
   line-height: 100rpx;
   color: #fff;
-  background-color: #E4C147;
+  background-color: #e4c147;
   box-shadow: 0 -2rpx 4rpx 4rpx rgba(0, 0, 0, 0.1);
 }
 

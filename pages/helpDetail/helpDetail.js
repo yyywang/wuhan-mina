@@ -203,7 +203,7 @@ Page({
             posterImg: result.tempFilePath
           })
         },
-        fail: () => {
+        fail: (res) => {
           console.log(res)
         }
       })

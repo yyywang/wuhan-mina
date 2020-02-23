@@ -49,17 +49,18 @@ page {
   height: 120rpx;
   line-height: 120rpx;
   padding: 0 20rpx;
-  color: #333;
+  color: #333 !important;
   border-bottom: 2rpx solid #e1e1e1;
-  font-size: 30rpx;
-  font-weight: bold !important;
+  font-size: 36rpx;
+  font-weight: normal !important;
   background-color: #fff;
   font-weight: normal;
+  border-radius: 0;
 }
 
 .menu-wrap .menu-list image {
-  width: 32rpx;
-  height: 32rpx;
+  width: 19rpx;
+  height: 37rpx;
 }
 
 .menu-wrap .menu-list .contact {

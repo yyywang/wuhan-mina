@@ -83,6 +83,10 @@ page {
 }
 
 .card .content .address {
+  width: 500rpx;
+  max-height: 80rpx;
+  line-height: 40rpx;
+  overflow: hidden;
   font-weight: 500;
   margin-top: 45rpx;
   margin-bottom: 10rpx;

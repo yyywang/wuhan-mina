@@ -19,7 +19,7 @@
       <view>中速</view>
       <view>高速</view>
     </view>
-    <progress color="#efc743" active="true" percent="{{content.speed/8*100}}" />
+    <progress backgroundColor='#fff' stroke-width="10" color="#efc743" active="true" percent="{{(content.speed+1)/9*100}}" />
     <view class="speed-msg">{{tools.formatSpeed(content.speed)}}</view>
   </view>
   <!-- e=速度 -->
@@ -96,7 +96,7 @@
   <view class="friend-show" wx:else>
     <!-- s=内容 -->
     <view class="content">
-      我的{{content.cat_num?content.cat_num+'猫':''}}{{content.dog_num?content.dog_num+'狗':''}}<text wx:if="{{content.support_days > -1}}"><text>可撑</text><text class="num">{{content.support_days}}</text>天</text><text wx:else>断粮<text class="num">{{-content.support_days}}</text>天</text>，需要{{content.location.city}}{{content.location.district}}的人帮忙喂养。请帮我加速助力！
+      我是{{content.supplicant.wx_name}},<text>\n</text>我的{{content.cat_num?content.cat_num+'只猫':''}}{{content.dog_num?content.dog_num+'只狗':''}}<text wx:if="{{content.support_days > -1}}"><text>可撑</text><text class="num">{{content.support_days}}</text>天</text><text wx:else>已经断粮<text class="num">{{-content.support_days}}</text>天</text>,<text>\n</text>需要{{content.location.city}}{{content.location.district}}的人帮忙喂养。<text>\n</text>请帮我加速助力！
     </view>
     <!-- e=内容 -->
     <!-- s=按钮 -->
@@ -116,7 +116,6 @@
         </scroll-view>
         <image src="/images/more_user.png" mode="widthFix" />
       </view>
-      
     </view>
     <!-- e=按钮 -->
     <!-- s=文案 -->

@@ -97,7 +97,7 @@ Page({
   },
   RegionChange: function(e) {
     this.setData({
-      region: e.detail.value,
+      region: e.detail.value[0] === '全部' ? config.region : e.detail.value,
       isNextPageLoading: true,
       onSearching: false,
       searchResult: null,
@@ -453,8 +453,8 @@ Page({
       var params = {
         url: 'seek-help/location',
         data: {
-          province: region[0],
-          city: region[1],
+          province: region[0] === '全国' ? '全部' : region[0],
+          city: region[1] === '全省市' ? '全部' : region[1],
           district: region[2],
           page: page
         },
@@ -477,8 +477,8 @@ Page({
       var params = {
         url: 'rescue/location',
         data: {
-          province: region[0],
-          city: region[1],
+          province: region[0] === '全国' ? '全部' : region[0],
+          city: region[1] === '全省市' ? '全部' : region[1],
           district: region[2],
           page: page
         },

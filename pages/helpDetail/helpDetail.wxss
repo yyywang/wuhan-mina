@@ -49,6 +49,7 @@
   background-color: #fff;
   padding-left: 20rpx;
   padding-right: 20rpx;
+  text-indent: 0 !important;
   height: auto;
   color: #333;
   font-size: 30rpx;
@@ -57,6 +58,7 @@
 }
 
 .form-input textarea {
+  padding-left: 12rpx;
   width: 406rpx;
   height: 110rpx;
   resize: none;
