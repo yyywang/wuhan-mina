@@ -28,6 +28,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    const scene = decodeURIComponent(options.scene)
+    let arr = scene.split('&')
     let that = this
     wx.getSystemInfo({
       success: res => {
@@ -36,30 +38,52 @@ Page({
         })
       }
     })
+    wx.showLoading({
+      title: 'Loading...',
+      mask: true
+    })
 
-    setTimeout(() => {
-      //分享打开
-      if (options.isSelf) {
+    //海报打开
+    if (scene !== 'undefined') {
+      setTimeout(() => {
         this.setData({
-          isSelf: options.isSelf,
-          id: options.id
+          isSelf: arr[1].slice(7),
+          id: arr[0].slice(3)
         })
         this.getBoostData(function() {
           that.getCode(function() {
+            wx.hideLoading()
             that.createCanvas()
           })
         })
+      }, 800)
+    } else {
+      //分享打开
+      if (options.isSelf) {
+        setTimeout(() => {
+          this.setData({
+            isSelf: options.isSelf,
+            id: options.id
+          })
+          this.getBoostData(function() {
+            that.getCode(function() {
+              wx.hideLoading()
+              that.createCanvas()
+            })
+          })
+        }, 800)
       } else {
         this.setData({
-          id: options.id
+          id: options.id || arr[0].slice(3)
         })
         this.getData(function() {
           that.getCode(function() {
+            wx.hideLoading()
             that.createCanvas()
           })
         })
       }
-    }, 1000)
+    }
   },
   //获取数据
   getData(callback) {
@@ -322,6 +346,7 @@ Page({
   //生成海报
   createCanvas() {
     let userInfo = app.globalData.userInfo
+
     let that = this
     let scale = this.data.windowWidth / 375.0
     that.setData({
@@ -427,7 +452,7 @@ Page({
             posterImg: result.tempFilePath
           })
         },
-        fail: (res) => {
+        fail: res => {
           console.log(res)
         }
       })

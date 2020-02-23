@@ -11,7 +11,7 @@ Page({
     userInfo: {},
     appId: 'wx8abaf00ee8c3202e',
     extraData: {
-      id: '1221'
+      id: '124485'
     }
   },
 

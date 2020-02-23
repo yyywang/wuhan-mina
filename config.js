@@ -1,7 +1,7 @@
 var config = {
   // api_base_url: 'http://172.20.10.2:5008/v1/',
-  // api_base_url: 'https://www.ywtest.cn/v1/',
-  api_base_url: 'http://www.ywtest.cn:9999/v1/',
+  api_base_url: 'https://www.ywtest.cn/v1/',
+  // api_base_url: 'http://www.ywtest.cn:9999/v1/',
   region: ['全国', '全省市', '全部'],
   swiperList: [
     {

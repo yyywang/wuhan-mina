@@ -310,7 +310,7 @@ Page({
           success: res => {
             console.log(res)
             if (res.authSetting['scope.subscribeMessage']) {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/helpDetail/helpDetail?id=' + helpRes.data.id
               })
             } else {
@@ -321,13 +321,13 @@ Page({
                 ],
                 success(res) {
                   console.log(res)
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: '/pages/helpDetail/helpDetail?id=' + helpRes.data.id
                   })
                 },
                 fail: res => {
                   console.log(res)
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: '/pages/helpDetail/helpDetail?id=' + helpRes.data.id
                   })
                 }

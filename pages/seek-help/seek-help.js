@@ -311,7 +311,7 @@ Page({
           withSubscriptions: true,
           success: res => {
             if (res.authSetting['scope.subscribeMessage']) {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/seekDetail/seekDetail?id=' + seekRes.data.id
               })
             } else {
@@ -322,13 +322,13 @@ Page({
                 ],
                 success(res) {
                   console.log(res)
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: '/pages/seekDetail/seekDetail?id=' + seekRes.data.id
                   })
                 },
                 fail: res => {
                   console.log(res)
-                  wx.navigateTo({
+                  wx.redirectTo({
                     url: '/pages/seekDetail/seekDetail?id=' + seekRes.data.id
                   })
                 }
