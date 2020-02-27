@@ -1,0 +1,193 @@
+<wxs src="../../utils/wxs_tools.wxs" module="tools" />
+<view class="container">
+  <!-- s=顶部 -->
+  <view class="rocket-wrap">
+    <image src="/images/rocket.png" class="rocket-img" />
+    <view class="rocket-content">
+      <view class="rocket-speed">
+        {{content.cancel?'已取消':(tools.formatSpeedShow(content.speed))}}
+      </view>
+      <view wx:if="{{!content.cancel}}">速度越快，救助消息越靠前</view>
+    </view>
+  </view>
+  <!-- e=顶部 -->
+  <!-- s=速度 -->
+  <view class="speed-wrap">
+    <view class="speed-title">当前速度</view>
+    <view class="progress-text">
+      <view>低速</view>
+      <view>中速</view>
+      <view>高速</view>
+    </view>
+    <progress backgroundColor='#fff' stroke-width="10" color="#efc743" active="true" percent="{{(content.speed+1)/9*100}}" />
+    <view class="speed-msg">{{tools.formatSpeed(content.speed)}}</view>
+  </view>
+  <!-- e=速度 -->
+  <!-- s=自己打开 -->
+  <view class="am-show-wrap" wx:if="{{isSelf===1||isSelf==='0'&&content.is_self}}">
+    <view class="am-show">
+      <view class="am-title">
+        <view class="title-msg">求喂信息</view>
+        <view wx:if="{{!content.cancel}}" class="update-msg" bind:tap="onUpdateTap">更新救助信息</view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">几只猫</view>
+        <view class="form-input">
+          <input type="number" disabled confirm-type="next" value="{{content.cat_num}}"></input>
+        </view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">几只狗</view>
+        <view class="form-input">
+          <input type="number" disabled confirm-type="next" value="{{content.dog_num}}"></input>
+        </view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">最后喂养日</view>
+        <view class="form-input">
+          <view class="place-holder choose-location disabled">
+            {{tools.formatTimeStamp(content.last_date)}}
+          </view>
+        </view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">需要帮助日期</view>
+        <view class="form-input">
+          <view class="place-holder choose-location disabled">
+            {{tools.formatTimeStamp(content.help_date)}}
+          </view>
+        </view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">地址</view>
+        <view class="form-input">
+          <view class="place-holder choose-location disabled">
+            {{content.location.address_name}}
+          </view>
+        </view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">小区管控</view>
+        <view class="form-input">
+          <view class="place-holder choose-location disabled">{{content.traffic_ctrl}}</view>
+        </view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">电话</view>
+        <view class="form-input">
+          <view class="place-holder choose-location disabled">{{content.supplicant.phone}}</view>
+        </view>
+      </view>
+      <view class="form-group flex justify-between align-center margin-top-sm">
+        <view class="form-label">微信</view>
+        <view class="form-input">
+          <view class="place-holder choose-location disabled">{{content.supplicant.wx_id}}</view>
+        </view>
+      </view>
+      <view class="cancel-btn" wx:if="{{!content.cancel}}" bind:tap="cancelSeek">取消救助</view>
+      <!-- <view class="statement">平台安全提示-免责声明</view> -->
+    </view>
+    <view class="share-btn" wx:if="{{!content.cancel}}">
+      <view bind:tap="showShare">请好友帮我加速救毛孩子</view>
+    </view>
+  </view>
+  <!-- e=自己打开 -->
+  <!-- s=好友打开 -->
+  <view class="friend-show" wx:else>
+    <!-- s=内容 -->
+    <view class="content">
+      我是{{content.supplicant.wx_name}},<text>\n</text>我的{{content.cat_num?content.cat_num+'只猫':''}}{{content.dog_num?content.dog_num+'只狗':''}}<text wx:if="{{content.support_days > -1}}"><text>可撑</text><text class="num">{{content.support_days}}</text>天</text><text wx:else>已经断粮<text class="num">{{-content.support_days}}</text>天</text>,<text>\n</text>需要{{content.location.city}}{{content.location.district}}的人帮忙喂养。<text>\n</text>请帮我加速助力！
+    </view>
+    <!-- e=内容 -->
+    <!-- s=按钮 -->
+    <button wx:if="{{!content.has_help&&!content.cancel}}" class="help-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+      一键帮ta助力
+    </button>
+    <button wx:if="{{content.has_help&&!content.cancel}}" class="help-btn" open-type="share" bindgetuserinfo="getUserInfo">
+      分享给好友帮ta助力
+    </button>
+    <view class="helpers-wrap" wx:if="{{content.has_help}}">
+      <view class="help-title">已有{{content.helpers.length}}名用户帮好友助力</view>
+      <view class="scroll-wrap">
+        <scroll-view scroll-x>
+          <view class="helper-list" wx:for="{{content.helpers}}">
+            <image src="{{item.wx_avatar}}" />
+          </view>
+        </scroll-view>
+        <image src="/images/more_user.png" mode="widthFix" />
+      </view>
+    </view>
+    <!-- e=按钮 -->
+    <!-- s=文案 -->
+    <view class="copywriting">
+      <view>我们是谁</view>
+      喂喂我猫狗帮喂服务平台，目前已有{{content.statistics.supplicant_num}}人发出救助请求，有{{content.statistics.rescuer_num}}人愿意帮助他人，累计有{{content.statistics.life_num}}条生命获得救助，邀请你和我们一起做点什么。
+    </view>
+    <!-- e=文案 -->
+    <!-- s=按钮组 -->
+    <view class="btn-wrap">
+      <button open-type="getUserInfo" bindgetuserinfo="toHelp" class="help-btn2">我能帮忙</button>
+      <button open-type="getUserInfo" bindgetuserinfo="toSeek" class="seek-btn">我要求助</button>
+    </view>
+    <!-- e=按钮组 -->
+  </view>
+  <!-- e=好友打开 -->
+  <!-- s=遮罩 -->
+  <view class="mask" wx:if="{{shareFlag}}">
+    <view class="mask-title">请好友帮忙</view>
+    <view class="share-warp">
+      <view class="share-list" bind:tap="showPoster">
+        <image src="/images/circle.png" />
+        <view>朋友圈</view>
+      </view>
+      <view class="share-list">
+        <image src="/images/weixin_green.png" />
+        <view>微信好友</view>
+        <button open-type="share" class="share-btn"></button>
+      </view>
+    </view>
+    <view class="hr"></view>
+    <view class="cancel" bind:tap="closeShare">取消</view>
+  </view>
+  <view class="black-wrap" wx:if="{{shareFlag}}"></view>
+  <!-- e=遮罩 -->
+  <!-- s=海报 -->
+  <canvas canvas-id="myCanvas"></canvas>
+  <view class="posterImg-wrap" wx:if="{{posterFlag}}">
+    <image src="{{posterImg}}" class="posterImg" bind:tap="closePoster" />
+    <view class="poster-title">图片已保存至手机，快去分享吧</view>
+  </view>
+  <view class="black-wrap" wx:if="{{posterFlag}}"></view>
+  <!-- e=海报 -->
+  <!-- s=更新 -->
+  <view class="cu-modal {{showUpdate?'show':''}} feedback-modal" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <view class="cu-bar justify-end">
+        <view class="sign text-white">
+          <image src="/images/wx_sing_bg.png" mode="aspectFit"></image>
+          <text>更 新</text>
+        </view>
+        <view class="action" bindtap="hideUpdateModal">
+          <image class="modal-close" src="/images/close.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="title">最后喂养日期</view>
+      <picker mode="date" class="update-picker" bindchange="onEndDateChange" value="{{showEndDate}}">
+        {{showEndDate?showEndDate:'选择日期'}}
+      </picker>
+      <view class="title">需要帮助日期</view>
+      <picker mode="date" class="update-picker" bindchange="onHelpDateChange" value="{{showHelpDate}}">
+        {{showHelpDate?showHelpDate:'选择日期'}}
+      </picker>
+      <view class="padding-xl container-btn-copy-wxid">
+        <view class="tips">
+          我们的人力资源十分有限，
+          <text>\n</text>
+          请不要滥用该功能，感谢理解！
+        </view>
+        <view class="btn-copy-wxid" bindtap="onSubmitUpdate">提 交</view>
+      </view>
+    </view>
+  </view>
+  <!-- e=更新 -->
+</view>

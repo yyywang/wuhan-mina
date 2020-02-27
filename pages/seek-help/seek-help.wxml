@@ -47,7 +47,10 @@
 	</view>
 	<view class="form-group flex justify-between align-center margin-top-sm">
 		<view class="form-label">电话</view>
-		<view class="form-input"><input type="number"  disabled="{{isUpdate}}" confirm-type="next" placeholder="输入手机号" bindinput="onPhoneInput" value="{{phone}}"></input></view>
+		<view class="form-input">
+      <input type="number"  disabled="{{isUpdate}}" confirm-type="next" placeholder="输入手机号" bindinput="onPhoneInput" value="{{phone}}"></input>
+      <!-- <button class="place-holder" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNum"></button> -->
+      </view>
 	</view>
 	<view class="form-group flex justify-between align-center margin-top-sm">
 		<view class="form-label">微信</view>

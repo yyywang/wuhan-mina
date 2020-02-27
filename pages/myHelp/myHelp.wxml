@@ -1,0 +1,21 @@
+<view class="container">
+  <view class="card help-card" wx:for="{{canHelp.items}}" bind:tap="toHelpDetail" data-id="{{item.id}}">
+    <view class="header">
+      <view class="title">
+        <view class="user-wrap">
+          <image class="user-img" src="{{userInfo.avatarUrl}}" />
+          <view class="user-name">{{userInfo.nickName}}</view>
+        </view>
+        <view class="cost {{item.cancel?'free':''}}">{{item.cancel?'已取消':'帮助中'}}</view>
+      </view>
+    </view>
+    <view class="content">
+      <!-- 显示：区 + 详细地址 -->
+      <view class="address">
+        <view>{{item.location.district}} - {{item.location.address_name}}</view>
+        <view class="help-range">附近{{item.help_range}}km</view>
+      </view>
+      <view class="animal text-bold">{{item.note}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,99 @@
+/* pages/myHelp/myHelp.wxss */
+.container {
+  padding: 0 20rpx;
+}
+
+.card {
+  background-color: white;
+  width: 100%;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  padding-right: 30rpx;
+  color: #66aad9;
+}
+
+.card .title {
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  font-size: 36rpx;
+}
+
+.help-card .header {
+  padding-right: 0;
+  color: #333;
+}
+
+.help-card .header .title {
+  width: 100%;
+  padding: 0 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 26rpx;
+}
+
+.help-card .header .title .user-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.help-card .header .title .user-img {
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: middle;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.help-card .header .title .cost {
+  background-color: #df7d6c;
+  color: #fff;
+  padding: 4rpx 20rpx;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+}
+
+.help-card .header .title .free {
+  background-color: #68a1cb;
+}
+
+.help-card .animal {
+  margin: 20rpx 0;
+  font-size: 30rpx;
+  color: #df7d6c;
+}
+
+.help-card .address {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 0;
+}
+
+.card .content {
+  padding: 0 30rpx;
+}
+
+.card .content .address {
+  font-weight: 500;
+  margin-top: 45rpx;
+  margin-bottom: 10rpx;
+}
+
+.card .content .animal {
+  font-weight: 500;
+}
